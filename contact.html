@@ -1,0 +1,245 @@
+﻿<!-- Declaration du type de document HTML5. -->
+<!DOCTYPE html>
+<!-- Racine du document avec la langue principale definie en francais. -->
+<html lang="fr">
+<!-- Debut de l'en-tete du document. -->
+<head>
+  <!-- Encodage des caracteres pour afficher correctement les accents. -->
+  <meta charset="UTF-8">
+  <!-- Adaptation de la page aux differents ecrans, surtout sur mobile. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titre affiche dans l'onglet du navigateur. -->
+  <title>Capri Exo - Contact et avis</title>
+  <meta name="description" content="Contactez Capri Exo, laissez un avis client avec une note sur 5 et retrouvez les informations utiles du stand de marché.">
+  <!-- Liaison avec la feuille de style principale. -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon du site visible dans l'onglet. -->
+  <link rel="icon" href="images/logocapriexo.png">
+</head>
+<!-- Debut du contenu visible dans la page. -->
+<body class="page-standard">
+  <!-- Barre de navigation principale du site. -->
+  <nav class="site-nav">
+    <!-- Lien vers l'accueil avec le bloc de marque. -->
+    <a href="index.html" class="brand" aria-label="Accueil Capri Exo">
+      <!-- Monogramme visuel de la marque. -->
+      <span class="brand-mark"><img src="images/logocapriexo.png" alt="Logo Capri Exo"></span>
+      <!-- Zone de texte du logo. -->
+      <span class="brand-text">
+        <!-- Nom principal de la boutique. -->
+        <strong>Capri Exo</strong>
+        <!-- Sous-titre descriptif de l'activite. -->
+        <small>Épicerie et produits exotiques</small>
+      </span>
+    </a>
+
+    <!-- Liens de navigation du site. -->
+    <div class="nav-links">
+      <!-- Lien vers la page d'accueil. -->
+      <a href="index.html">🏠 Accueil</a>
+      <!-- Lien vers le catalogue des produits. -->
+      <a href="produits.html">Produits</a>
+      <!-- Lien vers la page a propos. -->
+      <a href="apropos.html">À propos</a>
+      <!-- Lien vers la page de contact. -->
+      <a href="contact.html" aria-current="page">Contact</a>
+      <!-- Lien vers le panier avec compteur d'articles. -->
+      <a href="panier.html">🛒 Panier <span class="badge-panier">0</span></a>
+      <!-- Lien vers la future zone de connexion. -->
+      <a href="connexion.html" class="nav-login-link">Connexion</a>
+    </div>
+    
+  </nav>
+
+  <!-- Contenu principal de la page. -->
+  <main class="contact-page">
+    <!-- Bandeau de presentation. -->
+    <section class="page-banner page-banner-left">
+      <!-- Sous-titre de contexte. -->
+      <p class="eyebrow">Échangeons</p>
+      <!-- Titre principal de la page. -->
+      <h1>Contact et avis clients</h1>
+      <!-- Texte d'introduction. -->
+      <p>Posez une question, demandez un renseignement ou partagez simplement votre expérience après achat.</p>
+    </section>
+
+    <!-- Grille contenant les informations, le contact et les avis. -->
+    <section class="contact-layout">
+      <!-- Bloc d'informations utiles. -->
+      <article class="content-card location-card">
+        <!-- Titre du bloc. -->
+        <h2>Informations utiles</h2>
+        <!-- Lignes d'informations générales. -->
+        <p><strong>Retrait :</strong> possible à Cergy ou à Mantes-la-Jolie</p>
+        <p><strong>Téléphone :</strong> numéro à ajouter</p>
+        <p><strong>Email :</strong> email à ajouter</p>
+        <p><strong>Horaires :</strong> horaires à personnaliser</p>
+        <!-- Texte d'introduction. -->
+        <p class="muted">
+          Cette section reste simple, tout en rappelant que les retraits peuvent se faire sur les deux marchés.
+        </p>
+      </article>
+
+      <!-- Bloc du formulaire de contact. -->
+      <article class="content-card">
+        <!-- Titre du bloc. -->
+        <h2>Nous contacter</h2>
+        <!-- Formulaire de contact. -->
+        <form id="formContact" class="form-stack">
+          <!-- Champ nom. -->
+          <label>
+            Nom
+            <input id="contactNom" type="text" required placeholder="Votre nom">
+          </label>
+
+          <!-- Champ email. -->
+          <label>
+            Email
+            <input id="contactEmail" type="email" required placeholder="votre@email.com">
+          </label>
+
+          <label>
+            Marché concerné
+            <select id="contactMarket">
+              <option value="cergy">Cergy</option>
+              <option value="mantes-la-jolie">Mantes-la-Jolie</option>
+            </select>
+          </label>
+
+          <!-- Champ message. -->
+          <label>
+            Message
+            <textarea id="contactMessage" required placeholder="Votre message"></textarea>
+          </label>
+
+          <!-- Bouton d'envoi. -->
+          <button class="button button-primary" type="submit">Envoyer le message</button>
+        </form>
+        <!-- Zone d'etat du formulaire. -->
+        <p id="messageContact" class="form-message"></p>
+      </article>
+
+      <!-- Bloc du formulaire d'avis. -->
+      <article class="content-card">
+        <!-- Titre du bloc. -->
+        <h2>Laisser un avis</h2>
+        <p id="reviewSummary" class="muted"></p>
+        <!-- Formulaire d'avis. -->
+        <form id="formAvis" class="form-stack">
+          <!-- Champ nom. -->
+          <label>
+            Nom
+            <input id="avisNom" type="text" required placeholder="Votre nom">
+          </label>
+
+          <!-- Champ email. -->
+          <label>
+            Email
+            <input id="avisEmail" type="email" required placeholder="votre@email.com">
+          </label>
+
+          <label>
+            Marché visité
+            <select id="avisMarket">
+              <option value="cergy">Cergy</option>
+              <option value="mantes-la-jolie">Mantes-la-Jolie</option>
+            </select>
+          </label>
+
+          <!-- Champ note. -->
+          <label>
+            Note sur 5
+            <input id="avisNote" type="hidden" value="5" required>
+            <div class="rating-picker" role="radiogroup" aria-label="Note sur 5">
+              <button class="rating-star is-active" type="button" data-rating-value="1" aria-label="1 étoile">★</button>
+              <button class="rating-star is-active" type="button" data-rating-value="2" aria-label="2 étoiles">★</button>
+              <button class="rating-star is-active" type="button" data-rating-value="3" aria-label="3 étoiles">★</button>
+              <button class="rating-star is-active" type="button" data-rating-value="4" aria-label="4 étoiles">★</button>
+              <button class="rating-star is-active" type="button" data-rating-value="5" aria-label="5 étoiles">★</button>
+            </div>
+          </label>
+
+          <!-- Champ avis. -->
+          <label>
+            Avis
+            <textarea id="avisTexte" required placeholder="Partagez votre expérience"></textarea>
+          </label>
+
+          <!-- Bouton de publication. -->
+          <button class="button button-primary" type="submit">Publier l'avis</button>
+        </form>
+        <!-- Zone d'etat des avis. -->
+        <p id="messageAvis" class="form-message"></p>
+      </article>
+    </section>
+
+    <!-- Section des avis recents. -->
+    <section class="section">
+      <!-- Titre de section aligne a gauche. -->
+      <div class="section-heading section-heading-left">
+        <!-- Sous-titre de contexte. -->
+        <p class="eyebrow">Avis récents</p>
+        <!-- Titre principal de la section. -->
+        <h2>Ce que les clients disent</h2>
+      </div>
+      <!-- Conteneur des avis injectes par le script. -->
+      <div id="listeAvis" class="review-list"></div>
+    </section>
+  </main>
+
+  <!-- Pied de page du site. -->
+  <footer class="site-footer">
+    <!-- Logo de gauche. -->
+    <!-- Contenu central du footer. -->
+    <div class="footer-main">
+      <!-- Bloc marque dans le footer. -->
+      <div class="footer-brand">
+        <!-- Nom du site. -->
+        <strong>Capri Exo</strong>
+        <!-- Phrase de synthese. -->
+        <p>Produits exotiques, épicerie et saveurs du monde.</p>
+      </div>
+
+      <!-- Liens secondaires du footer. -->
+      <div class="footer-links">
+        <!-- Lien vers la page a propos. -->
+        <a href="apropos.html">À propos</a>
+        <!-- Lien vers la page produits. -->
+        <a href="produits.html">Produits</a>
+        <!-- Lien vers la page contact. -->
+        <a href="contact.html">Contact</a>
+        <!-- Lien vers les mentions legales. -->
+        <a href="mentionlegales.html">Mentions légales</a>
+      </div>
+
+      <!-- Liens sociaux du footer. -->
+      <div class="footer-socials" aria-label="Réseaux sociaux">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <img src="images/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <img src="images/whatapplogo.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <img src="images/tiktoklogo.png" alt="TikTok">
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <img src="images/facebooklogo.png" alt="Facebook">
+        </a>
+      </div>
+
+      <!-- Copyright. -->
+      <p class="footer-copy">&copy; 2026 Capri Exo - Tous droits réservés</p>
+    </div>
+
+    <!-- Logo de droite. -->
+  </footer>
+
+  <!-- Chargement du script produit commun au site. -->
+  <script src="produit.js"></script>
+</body>
+<!-- Fin du document HTML. -->
+</html>
+
+
+

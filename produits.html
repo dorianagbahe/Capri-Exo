@@ -1,0 +1,123 @@
+﻿<!-- Declaration du type de document HTML5. -->
+<!DOCTYPE html>
+<!-- Racine du document avec la langue principale definie en francais. -->
+<html lang="fr">
+<!-- Debut de l'en-tete du document. -->
+<head>
+  <!-- Encodage des caracteres pour afficher correctement les accents. -->
+  <meta charset="UTF-8">
+  <!-- Adaptation de la page aux differents ecrans, surtout sur mobile. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titre affiche dans l'onglet du navigateur. -->
+  <title>Capri Exo - Produits</title>
+  <meta name="description" content="Découvrez le catalogue Capri Exo avec recherche, filtres, favoris et ajout au panier.">
+  <!-- Liaison avec la feuille de style principale. -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon du site visible dans l'onglet. -->
+  <link rel="icon" href="images/logocapriexo.png">
+</head>
+<body class="page-standard">
+  <nav class="site-nav">
+    <a href="index.html" class="brand" aria-label="Accueil Capri Exo">
+      <span class="brand-mark"><img src="images/logocapriexo.png" alt="Logo Capri Exo"></span>
+      <span class="brand-text">
+        <strong>Capri Exo</strong>
+        <small>Épicerie et produits exotiques</small>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">🏠 Accueil</a>
+      <a href="produits.html" aria-current="page">Produits</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">🛒 Panier <span class="badge-panier">0</span></a>
+      <a href="connexion.html" class="nav-login-link">Connexion</a>
+    </div>
+  </nav>
+
+  <main class="catalog-page">
+    <section class="page-banner">
+      <p class="eyebrow">Notre sélection</p>
+      <h1>Produits Capri Exo</h1>
+      <p>Retrouvez les produits disponibles, filtrez plus facilement et préparez votre panier en quelques clics.</p>
+    </section>
+
+    <form class="search-box catalog-search-box" id="formRecherche">
+      <input id="searchInput" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+      <button type="submit" aria-label="Lancer la recherche">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+        </svg>
+      </button>
+    </form>
+
+    <section class="catalog-tools">
+      <div class="filter-row" id="categoryFilters" aria-label="Filtres de catégories"></div>
+      <div class="filter-row secondary-row">
+        <button class="filter-button is-active" type="button" data-filter="all">Tous</button>
+        <button class="filter-button" type="button" data-filter="favorites">Favoris</button>
+      </div>
+      <div class="filter-row secondary-row sort-row">
+        <label class="sort-label" for="sortProducts">Trier par</label>
+        <select id="sortProducts" class="sort-select" aria-label="Trier les produits">
+          <option value="default">Ordre du catalogue</option>
+          <option value="name-asc">Nom de A à Z</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+        </select>
+      </div>
+      <p id="messageRecherche" class="catalog-count"></p>
+    </section>
+
+    <section id="listeProduits" class="product-grid" aria-label="Liste des produits"></section>
+  </main>
+
+  <button
+    type="button"
+    class="back-to-top"
+    id="backToTopProducts"
+    aria-label="Retourner en haut de la page"
+    title="Retour en haut"
+  >
+    ↑
+  </button>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <strong>Capri Exo</strong>
+        <p>Produits exotiques, épicerie et saveurs du monde.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="apropos.html">À propos</a>
+        <a href="produits.html">Produits</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentionlegales.html">Mentions légales</a>
+      </div>
+
+      <div class="footer-socials" aria-label="Réseaux sociaux">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <img src="images/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <img src="images/whatapplogo.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <img src="images/tiktoklogo.png" alt="TikTok">
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <img src="images/facebooklogo.png" alt="Facebook">
+        </a>
+      </div>
+
+      <p class="footer-copy">&copy; 2026 Capri Exo - Tous droits réservés</p>
+    </div>
+
+  </footer>
+
+  <script src="produit.js"></script>
+</body>
+</html>
