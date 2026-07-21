@@ -1075,6 +1075,10 @@ button:disabled,
   gap: 24px;
 }
 
+.home-info-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .home-products-section-alt {
   padding-top: 18px;
 }
@@ -1116,6 +1120,15 @@ button:disabled,
 /* La section qui suit le hero reste un peu plus proche pour garder le rythme. */
 .page-home .hero + .section {
   padding-top: 20px;
+}
+
+.home-catalog-section .section-heading,
+.home-about-section .section-heading {
+  margin-bottom: 22px;
+}
+
+.home-catalog-section .catalog-tools {
+  margin-bottom: 28px;
 }
 
 /* Liste de points dans la partie histoire. */
@@ -2955,6 +2968,9 @@ button:disabled,
     top: 6px;
     left: 6px;
     right: 6px;
+    width: auto;
+    max-width: calc(100% - 12px);
+    box-sizing: border-box;
     padding: 12px;
     gap: 12px;
   }
@@ -2966,10 +2982,15 @@ button:disabled,
 
   .nav-links {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .nav-links a {
     font-size: 13px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .page-banner {
@@ -3021,11 +3042,19 @@ button:disabled,
   .hero-actions,
   .hero-actions-top {
     width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
   .hero-actions .button,
   .hero-actions-top .button {
-    flex: 1 1 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 12px 14px;
+    font-size: 14px;
+    text-align: center;
   }
 
   .hero-text {
@@ -3048,6 +3077,15 @@ button:disabled,
 
   .home-section-head .button {
     width: 100%;
+  }
+
+  .hero-photo-panel {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .photo-frame-large {
+    min-height: 240px;
   }
 
   .product-info {
@@ -3147,6 +3185,25 @@ button:disabled,
     padding: 12px 13px;
   }
 
+  .site-nav {
+    left: 5px;
+    right: 5px;
+    max-width: calc(100% - 10px);
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 7px;
+  }
+
+  .nav-links a,
+  .nav-login-link {
+    font-size: 12px;
+    padding: 11px 12px;
+    border-radius: 16px;
+  }
+
   .page-banner h1 {
     font-size: clamp(30px, 9vw, 40px);
   }
@@ -3170,8 +3227,27 @@ button:disabled,
     flex: 1 1 100%;
   }
 
+  .hero-actions,
+  .hero-actions-top {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .hero-actions .button,
+  .hero-actions-top .button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 11px 10px;
+    font-size: 12px;
+  }
+
   .hero-photo-panel {
     gap: 10px;
+  }
+
+  .photo-frame-large {
+    min-height: 210px;
   }
 
   .photo-caption {

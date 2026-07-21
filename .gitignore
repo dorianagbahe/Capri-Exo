@@ -1,0 +1,11 @@
+# Réglages locaux des éditeurs
+.vscode/
+
+# Outils et fichiers temporaires non nécessaires au site
+platform_experiences_helper.exe
+*.tmp
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db

@@ -7,6 +7,13 @@
   <meta name="description" content="Capri Exo présente des produits exotiques, épices, fruits, légumes et tubercules avec catalogue, fiches détaillées, panier et commande simplifiée.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="images/logocapriexo.png">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/products.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/contact.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
 <body class="page-home">
   <nav class="site-nav">
@@ -32,24 +39,25 @@
     <section class="hero">
       <div class="hero-copy">
         <div class="hero-actions hero-actions-top">
-          <a class="button button-primary" href="produits.html">Voir le catalogue</a>
+          <a class="button button-primary" href="#catalogue-produits">Voir le catalogue</a>
           <a class="button button-secondary" href="contact.html">Nous contacter</a>
         </div>
 
-        <h1>Découvrez les saveurs du marché avec Capri Exo.</h1>
+        <h1>Produits exotiques, épicerie et saveurs du marché.</h1>
         <p class="hero-text">
-          Fruits, légumes, épices et produits exotiques du stand Capri Exo, dans une présentation
-          plus claire, plus directe et plus agréable à parcourir.
+          Commandez plus facilement vos produits, découvrez le catalogue sans attendre
+          et retrouvez Capri Exo à Cergy et à Mantes-la-Jolie.
         </p>
 
         <div class="hero-quick-links" aria-label="Accès rapide">
-          <a class="quick-link" href="#latestHighlights">Produits du moment</a>
-          <a class="quick-link" href="produits.html">Tout le catalogue</a>
+          <a class="quick-link" href="#catalogue-produits">Commander maintenant</a>
+          <a class="quick-link" href="#capri-exo">Découvrir Capri Exo</a>
         </div>
 
         <ul class="hero-points">
-          <li>Des produits du marché plus faciles à repérer</li>
-          <li>Une commande plus simple avant le retrait</li>
+          <li>Catalogue visible immédiatement</li>
+          <li>Recherche simple et commande plus rapide</li>
+          <li>Retrait possible sur les marchés de Cergy et Mantes-la-Jolie</li>
         </ul>
       </div>
 
@@ -62,30 +70,93 @@
       </div>
     </section>
 
-    <section class="section home-products-section">
-      <div class="home-section-head">
-        <div class="section-heading section-heading-left">
-          <p class="eyebrow">Nouveautés</p>
-          <h2>Les produits du moment </h2>
-          <p>Une sélection rapide pour mettre en avant les dernières arrivées .</p>
-        </div>
-        <a class="button button-secondary" href="produits.html">Voir tous les produits</a>
+    <section class="section">
+      <div class="feature-grid home-info-grid">
+        <article class="feature-card">
+          <h3>Retrait sur le marché</h3>
+          <p>Choisissez votre produit en ligne puis préparez plus facilement votre passage sur le stand.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Vente au kilo ou à la pièce</h3>
+          <p>Le catalogue permet de distinguer rapidement les produits vendus au poids et ceux vendus à l'unité.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Commande plus directe</h3>
+          <p>Le client peut chercher, sélectionner et commander sans passer par plusieurs pages avant d'acheter.</p>
+        </article>
       </div>
-
-      <div id="latestHighlights" class="product-grid compact-grid" aria-label="Produits du moment"></div>
     </section>
 
-    <section class="section home-products-section home-products-section-alt">
-      <div class="home-section-head">
-        <div class="section-heading section-heading-left">
-          <p class="eyebrow">À découvrir</p>
-          <h2>Un accès direct aux produits qui donnent envie d’aller plus loin</h2>
-          <p>Des fiches produits visibles immédiatement pour inviter à parcourir le catalogue sans chercher longtemps.</p>
-        </div>
-        <a class="button button-primary" href="produits.html">Accéder au catalogue complet</a>
+    <section id="catalogue-produits" class="section home-catalog-section">
+      <div class="section-heading">
+        <p class="eyebrow">Catalogue</p>
+        <h2>Commandez directement depuis l'accueil</h2>
+        <p>Retrouvez le catalogue complet, recherchez un produit et ajoutez-le rapidement au panier.</p>
       </div>
 
-      <div id="homeSelection" class="product-grid compact-grid" aria-label="Produits à découvrir"></div>
+      <form class="search-box catalog-search-box" id="formRecherche">
+        <input id="searchInput" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+        <button type="submit" aria-label="Lancer la recherche">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+          </svg>
+        </button>
+      </form>
+
+      <section class="catalog-tools">
+        <div class="filter-row" id="categoryFilters" aria-label="Filtres de catégories"></div>
+        <div class="filter-row secondary-row">
+          <button class="filter-button is-active" type="button" data-filter="all">Tous</button>
+          <button class="filter-button" type="button" data-filter="favorites">Favoris</button>
+        </div>
+        <div class="filter-row secondary-row sort-row">
+          <label class="sort-label" for="sortProducts">Trier par</label>
+          <select id="sortProducts" class="sort-select" aria-label="Trier les produits">
+            <option value="default">Ordre du catalogue</option>
+            <option value="name-asc">Nom de A à Z</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+          </select>
+        </div>
+        <p id="messageRecherche" class="catalog-count"></p>
+      </section>
+
+      <section id="listeProduits" class="product-grid" aria-label="Liste des produits"></section>
+    </section>
+
+    <section id="capri-exo" class="section home-about-section">
+      <div class="section-heading">
+        <p class="eyebrow">Capri Exo</p>
+        <h2>Un stand de marché pensé pour le quotidien et les saveurs du monde</h2>
+        <p>Capri Exo rassemble des produits exotiques, de l'épicerie et des saveurs du quotidien dans un esprit simple, proche et accueillant.</p>
+      </div>
+
+      <div class="about-grid">
+        <article class="content-card">
+          <h2>Une sélection claire et utile</h2>
+          <p>
+            Le site met les produits au premier plan pour permettre aux clients de gagner du temps,
+            mieux repérer les articles recherchés et préparer plus facilement leur commande.
+          </p>
+          <p>
+            Cette approche permet de retrouver l'essentiel immédiatement : les produits, les prix,
+            les modes de vente et les informations utiles avant le retrait.
+          </p>
+        </article>
+
+        <article class="content-card">
+          <h2>Le marché, plus simple à retrouver</h2>
+          <p>
+            Capri Exo garde l'esprit du marché tout en ajoutant une lecture plus fluide en ligne.
+            Le client peut découvrir l'offre, comparer plus facilement et retrouver les bons repères
+            avant de passer sur le stand.
+          </p>
+          <p>
+            L'objectif est simple : moins de friction, plus de clarté et une commande plus directe.
+          </p>
+        </article>
+      </div>
     </section>
 
     <section class="section story-section">
@@ -151,6 +222,18 @@
 
   </footer>
 
-  <script src="produit.js"></script>
+  <button
+    type="button"
+    class="back-to-top"
+    id="backToTopProducts"
+    aria-label="Retourner en haut de la page"
+    title="Retour en haut"
+  >
+    ↑
+  </button>
 </body>
 </html>
+
+
+
+
