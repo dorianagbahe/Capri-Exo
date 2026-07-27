@@ -1,4 +1,4 @@
-﻿/* =========================
+/* =========================
    1. VARIABLES ET BASE GLOBALE
 ========================= */
 
@@ -15,6 +15,13 @@
   --shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
   --radius-lg: 24px;
   --max-width: 1180px;
+  --pill-bg: rgba(255, 255, 255, 0.96);
+  --pill-bg-hover: #ffffff;
+  --pill-border: rgba(0, 0, 0, 0.14);
+  --pill-border-strong: rgba(0, 0, 0, 0.18);
+  --pill-text: #111111;
+  --pill-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+  --pill-shadow-hover: 0 16px 28px rgba(0, 0, 0, 0.12);
   --space-section-y: 48px;
   --space-block-gap: 24px;
   --space-content-gap: 18px;
@@ -31,6 +38,7 @@
 /* Le defilement ancre est lisse sur tout le site. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 132px;
 }
 
 /* Base visuelle de toute l'application. */
@@ -248,40 +256,44 @@ img {
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
-  border: 1px solid transparent;
+  border: 1px solid var(--pill-border);
   border-radius: 999px;
-  color: var(--text);
+  background: var(--pill-bg);
+  color: var(--pill-text);
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
+  box-shadow: var(--pill-shadow);
   transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* Etat au survol et page courante. */
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--primary-dark);
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
   transform: translateY(-1px);
 }
 
 .nav-links a[aria-current="page"] {
-  border-color: rgba(0, 0, 0, 0.14);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
 }
 
 /* Bouton de connexion plus visible tout à droite du header. */
 .nav-login-link {
   margin-left: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--primary-dark);
-  box-shadow: 0 10px 18px rgba(67, 42, 30, 0.08);
+  border-color: var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow);
 }
 
 .nav-login-link:hover,
 .nav-login-link[aria-current="page"] {
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--pill-bg-hover);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
 }
 
 .nav-toggle {
@@ -435,6 +447,10 @@ img {
 /* Base des boutons reutilisables. */
 .button {
   padding: 13px 18px;
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow);
   font-weight: 700;
 }
 
@@ -448,23 +464,31 @@ img {
 
 /* Variante primaire des boutons d'action. */
 .button-primary {
-  background: linear-gradient(135deg, var(--primary), #3a3a3a);
-  color: #fff;
-  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
+  box-shadow: var(--pill-shadow);
 }
 
 /* Variante secondaire plus legere. */
 .button-secondary {
-  background: rgba(255, 255, 255, 0.76);
-  color: var(--primary-dark);
-  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
 }
 
 /* Variante WhatsApp pour les commandes rapides. */
 .button-whatsapp {
-  background: #1f1f1f;
-  color: #fff;
-  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
+  box-shadow: var(--pill-shadow);
+}
+
+.button:hover {
+  background: var(--pill-bg-hover);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
 }
 
 /* Les boutons désactivés restent visibles mais non cliquables. */
@@ -598,15 +622,15 @@ button:disabled,
   width: fit-content;
   margin: 0 0 10px;
   padding: 8px 14px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--pill-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--primary-dark);
+  background: var(--pill-bg);
+  color: var(--pill-text);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 12px 22px rgba(59, 37, 24, 0.06);
+  box-shadow: var(--pill-shadow);
 }
 
 /* Titres partages entre le hero, les sections et les fiches produit. */
@@ -746,51 +770,43 @@ button:disabled,
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid var(--pill-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--primary-dark);
+  background: var(--pill-bg);
+  color: var(--pill-text);
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--pill-shadow);
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
 }
 
 .quick-link:hover {
   transform: translateY(-1px);
-  border-color: rgba(0, 0, 0, 0.16);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.08);
+  border-color: var(--pill-border-strong);
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow-hover);
 }
 
-.page-home .quick-link {
-  border-color: #111111;
-  background: #111111;
-  color: #ffffff;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
-}
-
-.page-home .quick-link:hover {
-  border-color: #1f1f1f;
-  background: #1f1f1f;
-  color: #ffffff;
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
-}
-
+.page-home .hero-actions-top .button-primary,
 .page-home .hero-actions-top .button-secondary,
+.page-home .home-products-section .home-section-head .button-primary,
 .page-home .home-products-section .home-section-head .button-secondary {
-  background: #111111;
-  color: #ffffff;
-  border-color: #111111;
-  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border: 1px solid var(--pill-border);
+  box-shadow: var(--pill-shadow);
 }
 
+.page-home .hero-actions-top .button-primary:hover,
 .page-home .hero-actions-top .button-secondary:hover,
+.page-home .home-products-section .home-section-head .button-primary:hover,
 .page-home .home-products-section .home-section-head .button-secondary:hover {
-  background: #1f1f1f;
-  color: #ffffff;
-  border-color: #1f1f1f;
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
 }
 
 /* Ligne d'actions du hero. */
@@ -1422,16 +1438,18 @@ button:disabled,
 .filter-button {
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.76);
-  color: var(--muted);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow);
   font-weight: 700;
 }
 
 /* Etat actif du filtre. */
 .filter-button.is-active {
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--primary-dark);
-  border-color: rgba(0, 0, 0, 0.24);
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
 }
 
 /* Petite ligne de badges produit dans les cartes. */
@@ -1963,21 +1981,21 @@ button:disabled,
   gap: 8px;
   margin-bottom: 24px;
   padding: 10px 16px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
+  border: 1px solid var(--pill-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
-  color: var(--primary-dark);
+  background: var(--pill-bg);
+  color: var(--pill-text);
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--pill-shadow);
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
 }
 
 /* Petit soulignement au survol. */
 .back-link:hover {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 0, 0, 0.16);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+  background: var(--pill-bg-hover);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
   text-decoration: none;
   transform: translateY(-1px);
 }
@@ -2526,8 +2544,10 @@ button:disabled,
   align-items: center;
   padding: 7px 12px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.08);
-  color: #111111;
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow);
   font-size: 12px;
   font-weight: 700;
 }
@@ -2585,21 +2605,22 @@ button:disabled,
 /* Footer pleine largeur : il occupe toute la largeur disponible sans depasser de la page. */
 .site-footer {
   width: 100%;
-  margin: 34px 0 0;
-  padding: 22px clamp(18px, 3vw, 30px);
+  margin: 18px 0 0;
+  padding: 12px clamp(18px, 3vw, 30px) 18px;
   display: block;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 28px;
-  background: rgba(255, 253, 249, 0.88);
-  box-shadow: 0 16px 35px rgba(61, 36, 28, 0.12);
-  backdrop-filter: blur(18px);
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
   overflow: hidden;
 }
 
 /* Bloc central du footer. */
 .footer-main {
   display: grid;
-  gap: 12px;
+  gap: 8px;
   justify-items: center;
   text-align: center;
 }
@@ -2620,15 +2641,17 @@ button:disabled,
 }
 
 .footer-brand strong {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.1;
+  font-weight: 700;
+  opacity: 0.84;
 }
 
 .footer-brand p {
   max-width: 42ch;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
-  opacity: 0.9;
+  opacity: 0.68;
 }
 
 .footer-markets {
@@ -2641,7 +2664,7 @@ button:disabled,
 /* Liens secondaires du footer. */
 .footer-links {
   display: flex;
-  gap: 6px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -2651,56 +2674,60 @@ button:disabled,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--text);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(17, 17, 17, 0.72);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+  transition: color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
 }
 
 /* Survol des liens du footer. */
 .footer-links a:hover {
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--primary-dark);
-  transform: translateY(-1px);
+  background: transparent;
+  color: #111111;
+  box-shadow: none;
+  transform: none;
 }
 
 .footer-links a[aria-current="page"] {
-  background: rgba(0, 0, 0, 0.07);
-  border-color: rgba(0, 0, 0, 0.14);
-  color: var(--primary-dark);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  background: transparent;
+  color: #111111;
+  box-shadow: none;
 }
 
 /* Liens sociaux du footer. */
 .footer-socials {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 /* Boutons sociaux du footer. */
 .footer-socials a {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 0;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 18px rgba(67, 42, 30, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  opacity: 0.6;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .footer-socials a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.10);
+  transform: none;
+  box-shadow: none;
+  opacity: 0.9;
 }
 
 /* Images des logos sociaux. */
@@ -2714,9 +2741,9 @@ button:disabled,
 /* Copyright centre. */
 .footer-copy {
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
-  opacity: 0.78;
+  opacity: 0.58;
 }
 
 /* =========================
