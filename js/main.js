@@ -1,4 +1,4 @@
-﻿function refreshRatingPicker(value = Number(document.getElementById("avisNote")?.value || 5)) {
+function refreshRatingPicker(value = Number(document.getElementById("avisNote")?.value || 5)) {
   document.querySelectorAll("[data-rating-value]").forEach((button) => {
     const isActive = Number(button.dataset.ratingValue) <= Number(value);
     button.classList.toggle("is-active", isActive);
