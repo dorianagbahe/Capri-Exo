@@ -1,4 +1,4 @@
-﻿function money(value) {
+function money(value) {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR"
@@ -720,13 +720,45 @@ function setupResponsiveNav() {
   syncNavState();
 }
 
-function syncCurrentNavigation() {
-  const currentFile = window.location.pathname.split("/").pop() || "index.html";
-  const currentPage = currentFile === "produit.html" ? "produits.html" : currentFile;
-
+function clearCurrentNavigationState() {
   document.querySelectorAll('.site-nav .nav-links a[aria-current="page"], .footer-links a[aria-current="page"], .nav-login-link[aria-current="page"]').forEach((link) => {
     link.removeAttribute("aria-current");
   });
+}
+
+function setCurrentNavigationState(selectors) {
+  selectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((link) => {
+      link.setAttribute("aria-current", "page");
+    });
+  });
+}
+
+function setProductsNavigationActive() {
+  clearCurrentNavigationState();
+  setCurrentNavigationState([
+    '.site-nav .nav-links a[href="#catalogue-produits"]',
+    '.site-nav .nav-links a[href="index.html#catalogue-produits"]',
+    '.footer-links a[href="#catalogue-produits"]',
+    '.footer-links a[href="index.html#catalogue-produits"]'
+  ]);
+}
+
+function syncCurrentNavigation() {
+  const currentFile = window.location.pathname.split("/").pop() || "index.html";
+  const currentPage = currentFile === "produit.html" ? "produit.html" : currentFile;
+
+  clearCurrentNavigationState();
+
+  if (currentPage === "index.html") {
+    setProductsNavigationActive();
+    return;
+  }
+
+  if (currentPage === "produit.html" || currentPage === "produits.html") {
+    setProductsNavigationActive();
+    return;
+  }
 
   document.querySelectorAll(`.site-nav .nav-links a[href="${currentPage}"], .footer-links a[href="${currentPage}"]`).forEach((link) => {
     link.setAttribute("aria-current", "page");
