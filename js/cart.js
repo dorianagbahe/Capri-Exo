@@ -1,4 +1,4 @@
-﻿function cartMedia(product) {
+function cartMedia(product) {
   const hasImageClass = product.image ? " has-image" : "";
   const imageMarkup = product.image
     ? `<img class="cart-media-image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}">`
@@ -156,7 +156,7 @@ function cartSummaryMarkup(cart) {
       </div>
       <div class="summary-actions">
         <button class="button button-primary" type="button" data-finalize-order>Finaliser la commande</button>
-        <a class="button button-secondary" href="produits.html">Continuer mes achats</a>
+        <a class="button button-secondary" href="index.html#catalogue-produits">Continuer mes achats</a>
         <button class="button button-secondary" type="button" data-clear-cart>Vider le panier</button>
         <a class="button button-whatsapp" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" data-cart-whatsapp>Commander sur WhatsApp</a>
       </div>
@@ -250,7 +250,7 @@ function renderCartPage() {
       <div class="empty-state">
         <h2>Votre panier est vide</h2>
         <p>Ajoutez des produits depuis le catalogue ou une fiche détaillée pour commencer.</p>
-        <a class="button button-primary" href="produits.html">Voir les produits</a>
+        <a class="button button-primary" href="index.html#catalogue-produits">Voir le catalogue</a>
       </div>
     `;
     renderOrderConfirmation();
