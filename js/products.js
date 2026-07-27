@@ -1,4 +1,4 @@
-﻿function renderCatalogPage() {
+function renderCatalogPage() {
   renderCategoryFilters();
   renderTagFilters();
 
@@ -113,7 +113,7 @@ function renderProductDetail() {
       <div class="empty-state">
         <h1>Produit introuvable</h1>
         <p>La fiche demandée n'existe pas ou n'est plus disponible.</p>
-        <a class="button button-primary" href="produits.html">Retour aux produits</a>
+        <a class="button button-primary" href="index.html#catalogue-produits">Retour au catalogue</a>
       </div>
     `;
 
@@ -177,6 +177,9 @@ function renderProductDetail() {
             <button class="button button-secondary" type="button" data-favorite="${product.id}">
               ${favoriteActive(product.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
             </button>
+            <a class="button button-secondary" href="panier.html">
+              Voir le panier
+            </a>
             <a class="button button-whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-product-whatsapp="${product.id}">
               Commander sur WhatsApp
             </a>
