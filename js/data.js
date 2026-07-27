@@ -1,4 +1,4 @@
-﻿// Catalogue source du site : chaque objet represente un produit exploitable partout.
+// Catalogue source du site : chaque objet represente un produit exploitable partout.
 const products = [
   {
     id: "arachide-caramelisee",
@@ -303,15 +303,15 @@ const products = [
     id: "ananas",
     name: "Ananas",
     category: "Fruits",
-    priceValue: 4,
-    unitMode: "count",
-    unitLabel: "pièce",
+    priceValue: 5.5,
+    unitMode: "weight",
+    unitLabel: "kg",
     image: "images/Ananas du bénin.webp",
     description: "Ananas parfumé, sucre et genereux, agréable nature, en jus ou en dessert.",
     origin: "Bénin.",
     storage: "A temperature ambiante puis au frais apres decoupe.",
     availability: "Disponible selon le stock du jour.",
-    orderNote: "Produit vendu a la piece. Choisissez le nombre souhaite avant l'ajout au panier.",
+    orderNote: "Produit vendu au kilo. Indiquez le poids souhaite avant l'ajout au panier.",
     tip: "Très apprécié pour les jus frais et salades de fruits."
   },
   {
