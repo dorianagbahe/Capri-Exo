@@ -263,7 +263,7 @@ function initGlobalActions() {
     }
 
     if (searchInput) {
-      renderCatalogPage();
+      renderCatalogPage({ preserveScroll: true, refreshFilters: false });
     }
 
     if (orderDraftField) {

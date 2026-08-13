@@ -1,4 +1,4 @@
-function cartMedia(product) {
+﻿function cartMedia(product) {
   const hasImageClass = product.image ? " has-image" : "";
   const imageMarkup = product.image
     ? `<img class="cart-media-image" src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}">`

@@ -1,4 +1,4 @@
-function selectedCategoryList() {
+﻿function selectedCategoryList() {
   return [...new Set(products.map((product) => product.category))].sort((a, b) => a.localeCompare(b));
 }
 

@@ -1,4 +1,4 @@
-function renderReviews() {
+﻿function renderReviews() {
   const target = document.getElementById("listeAvis");
   const summary = document.getElementById("reviewSummary");
   if (!target) {

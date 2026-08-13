@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capri Exo - Suivi du site</title>
+  <meta name="description" content="Tableau de suivi complet du projet Capri Exo : front-end, back-end, contenus, photos, sécurité, tests et mise en ligne.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/logocapriexo.png">
+  <script defer src="js/data.js"></script>
+  <script defer src="js/core.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/products.js"></script>
+  <script defer src="js/cart.js"></script>
+  <script defer src="js/contact.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/suivi.js"></script>
+</head>
+<body class="page-standard page-tracker">
+  <!-- Navigation principale -->
+  <nav class="site-nav">
+    <a href="index.html" class="brand" aria-label="Accueil Capri Exo">
+      <span class="brand-mark"><img src="images/logocapriexo.png" alt="Logo Capri Exo"></span>
+      <span class="brand-text">
+        <strong>Capri Exo</strong>
+        <small>Épicerie et produits exotiques</small>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html#catalogue-produits">Produits</a>
+      <a href="suivi.html" aria-current="page">Suivi</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">🛒 Panier <span class="badge-panier">0</span></a>
+      <a href="connexion.html" class="nav-login-link">Connexion</a>
+    </div>
+  </nav>
+
+  <!-- Tableau de pilotage du projet -->
+  <main class="tracker-page">
+    <section class="page-banner page-banner-left">
+      <p class="eyebrow">Pilotage du projet</p>
+      <h1>Suivi complet de Capri Exo</h1>
+      <p>Front-end, back-end, contenus, photos, sécurité et mise en ligne réunis dans une seule checklist.</p>
+    </section>
+
+    <section class="tracker-overview" aria-label="Progression du projet">
+      <div class="tracker-progress-copy">
+        <p class="eyebrow">Progression générale</p>
+        <strong id="trackerProgressText">0 % terminé</strong>
+        <p>La progression est enregistrée sur cet appareil tant que les données du navigateur ne sont pas effacées.</p>
+      </div>
+
+      <div class="tracker-progress-block">
+        <progress id="trackerProgress" max="100" value="0">0 %</progress>
+        <div class="tracker-stats" aria-live="polite">
+          <span><strong id="trackerCompletedCount">0</strong> terminés</span>
+          <span><strong id="trackerRemainingCount">0</strong> à faire</span>
+          <span><strong id="trackerTotalCount">0</strong> au total</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracker-workspace" aria-labelledby="trackerTableTitle">
+      <div class="tracker-heading-row">
+        <div>
+          <p class="eyebrow">Plan de travail</p>
+          <h2 id="trackerTableTitle">Checklist détaillée avant la mise en ligne</h2>
+        </div>
+        <p id="trackerVisibleCount" class="tracker-visible-count" aria-live="polite"></p>
+      </div>
+
+      <div class="tracker-toolbar">
+        <label class="tracker-search-field">
+          <span>Rechercher une tâche</span>
+          <input id="trackerSearch" type="search" placeholder="Ex. photos, paiement, stock..." autocomplete="off">
+        </label>
+
+        <label>
+          <span>Domaine</span>
+          <select id="trackerDomainFilter">
+            <option value="all">Tous les domaines</option>
+          </select>
+        </label>
+
+        <div class="tracker-status-field">
+          <span>État</span>
+          <div class="tracker-segmented" role="group" aria-label="Filtrer selon l'état">
+            <button type="button" class="is-active" data-tracker-status="all" aria-pressed="true">Tous</button>
+            <button type="button" data-tracker-status="todo" aria-pressed="false">À faire</button>
+            <button type="button" data-tracker-status="done" aria-pressed="false">Terminés</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tracker-table-wrap">
+        <table class="tracker-table">
+          <thead>
+            <tr>
+              <th scope="col">Fait</th>
+              <th scope="col">Domaine</th>
+              <th scope="col">Élément à contrôler</th>
+              <th scope="col">Travail détaillé</th>
+              <th scope="col">Priorité</th>
+              <th scope="col">État</th>
+            </tr>
+          </thead>
+          <tbody id="trackerTableBody"></tbody>
+        </table>
+        <p id="trackerEmptyState" class="tracker-empty-state" hidden>Aucune tâche ne correspond à ces filtres.</p>
+      </div>
+
+      <div class="tracker-actions">
+        <button id="trackerPrint" class="button button-secondary" type="button">Imprimer le suivi</button>
+        <button id="trackerReset" class="button tracker-reset-button" type="button">Restaurer le diagnostic initial</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <strong>Capri Exo</strong>
+        <p>Produits exotiques, épicerie et saveurs du monde.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="apropos.html">À propos</a>
+        <a href="index.html#catalogue-produits">Produits</a>
+        <a href="suivi.html" aria-current="page">Suivi</a>
+        <a href="contact.html">Contact</a>
+        <a href="mentionlegales.html">Mentions légales</a>
+      </div>
+
+      <div class="footer-socials" aria-label="Réseaux sociaux">
+        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <img src="images/youtubelogo.png" alt="YouTube">
+        </a>
+        <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <img src="images/whatapplogo.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <img src="images/tiktoklogo.png" alt="TikTok">
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <img src="images/facebooklogo.png" alt="Facebook">
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2026 Capri Exo - Tous droits réservés</p>
+    </div>
+  </footer>
+</body>
+</html>

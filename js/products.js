@@ -1,6 +1,10 @@
-function renderCatalogPage() {
-  renderCategoryFilters();
-  renderTagFilters();
+function renderCatalogPage({ preserveScroll = false, refreshFilters = true } = {}) {
+  const scrollPosition = preserveScroll ? window.scrollY : null;
+
+  if (refreshFilters) {
+    renderCategoryFilters();
+    renderTagFilters();
+  }
 
   const productList = document.getElementById("listeProduits");
   const count = document.getElementById("messageRecherche");
@@ -48,6 +52,12 @@ function renderCatalogPage() {
   tagButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.tagFilter === currentTagFilter);
   });
+
+  if (scrollPosition !== null) {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: scrollPosition, behavior: "auto" });
+    });
+  }
 }
 
 function renderHomeSelection() {

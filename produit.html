@@ -1,19 +1,18 @@
-<!-- Declaration du type de document HTML5. -->
 <!DOCTYPE html>
-<!-- Racine du document avec la langue principale definie en francais. -->
+
 <html lang="fr">
-<!-- Debut de l'en-tete du document. -->
+
 <head>
-  <!-- Encodage des caracteres pour afficher correctement les accents. -->
+  
   <meta charset="UTF-8">
-  <!-- Adaptation de la page aux differents ecrans, surtout sur mobile. -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Titre affiche dans l'onglet du navigateur. -->
+  
   <title>Capri Exo - Produit</title>
   <meta name="description" content="Consultez la fiche détaillée d'un produit Capri Exo avec sa description, sa disponibilité, sa conservation et les options de commande.">
-  <!-- Liaison avec la feuille de style principale. -->
+  
   <link rel="stylesheet" href="style.css">
-  <!-- Favicon du site visible dans l'onglet. -->
+  
   <link rel="icon" href="images/logocapriexo.png">
   <script defer src="js/data.js"></script>
   <script defer src="js/core.js"></script>
@@ -23,85 +22,94 @@
   <script defer src="js/contact.js"></script>
   <script defer src="js/main.js"></script>
 </head>
-<!-- Debut du contenu visible dans la page. -->
+
 <body class="page-standard">
-  <!-- Barre de navigation principale du site. -->
+  
+  <!-- Navigation principale -->
+  
   <nav class="site-nav">
-    <!-- Lien vers l'accueil avec le bloc de marque. -->
+    
     <a href="index.html" class="brand" aria-label="Accueil Capri Exo">
-      <!-- Monogramme visuel de la marque. -->
+      
       <span class="brand-mark"><img src="images/logocapriexo.png" alt="Logo Capri Exo"></span>
-      <!-- Zone de texte du logo. -->
+      
       <span class="brand-text">
-        <!-- Nom principal de la boutique. -->
+        
         <strong>Capri Exo</strong>
-        <!-- Sous-titre descriptif de l'activite. -->
+        
         <small>Épicerie et produits exotiques</small>
       </span>
     </a>
 
-    <!-- Liens de navigation du site. -->
+    
     <div class="nav-links">
-      <!-- Lien vers le catalogue des produits. -->
+      
       <a href="index.html#catalogue-produits">Produits</a>
-      <!-- Lien vers la page a propos. -->
+      <a href="suivi.html">Suivi</a>
+      
       <a href="apropos.html">À propos</a>
-      <!-- Lien vers la page de contact. -->
+      
       <a href="contact.html">Contact</a>
-      <!-- Lien vers le panier avec compteur d'articles. -->
+      
       <a href="panier.html">🛒 Panier <span class="badge-panier">0</span></a>
-      <!-- Lien vers la future zone de connexion. -->
+      
       <a href="connexion.html" class="nav-login-link">Connexion</a>
     </div>
 
   </nav>
 
-  <!-- Contenu principal de la fiche produit. -->
+  
+  <!-- Contenu principal -->
+
+  
   <main class="detail-page">
-    <!-- Lien de retour vers le catalogue. -->
+    
     <a class="back-link" href="index.html#catalogue-produits">Retour au catalogue</a>
-    <!-- Zone de fiche produit remplie par le script. -->
+    
     <section id="ficheProduit" class="product-detail-shell"></section>
-    <!-- Section des produits associes. -->
+    
     <section class="related-section">
-      <!-- Titre de section aligne a gauche. -->
+      
       <div class="section-heading section-heading-left">
-        <!-- Sous-titre de contexte. -->
+        
         <p class="eyebrow">Produits similaires</p>
-        <!-- Titre principal de la section. -->
+        
         <h2>D'autres idées à découvrir dans le même esprit</h2>
       </div>
-      <!-- Grille des produits similaires. -->
+      
       <div id="relatedProducts" class="product-grid compact-grid"></div>
     </section>
   </main>
 
-  <!-- Pied de page du site. -->
+  
+  <!-- Pied de page -->
+
+  
   <footer class="site-footer">
-    <!-- Logo de gauche. -->
-    <!-- Contenu central du footer. -->
+    
+    
     <div class="footer-main">
-      <!-- Bloc marque dans le footer. -->
+      
       <div class="footer-brand">
-        <!-- Nom du site. -->
+        
         <strong>Capri Exo</strong>
-        <!-- Phrase de synthese. -->
+        
         <p>Produits exotiques, épicerie et saveurs du monde.</p>
       </div>
 
-      <!-- Liens secondaires du footer. -->
+      
       <div class="footer-links">
-        <!-- Lien vers la page a propos. -->
+        
         <a href="apropos.html">À propos</a>
-        <!-- Lien vers la page produits. -->
+        
         <a href="index.html#catalogue-produits">Produits</a>
-        <!-- Lien vers la page contact. -->
+        
         <a href="contact.html">Contact</a>
-        <!-- Lien vers les mentions legales. -->
+        
         <a href="mentionlegales.html">Mentions légales</a>
       </div>
 
-      <!-- Liens sociaux du footer. -->
+      
       <div class="footer-socials" aria-label="Réseaux sociaux">
         <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
           <img src="images/youtubelogo.png" alt="YouTube">
@@ -117,19 +125,14 @@
         </a>
       </div>
 
-      <!-- Copyright. -->
+      
       <p class="footer-copy">&copy; 2026 Capri Exo - Tous droits réservés</p>
     </div>
 
-    <!-- Logo de droite. -->
+    
   </footer>
 
-  <!-- Chargement des scripts JavaScript separes du site. -->
+  
 </body>
-<!-- Fin du document HTML. -->
+
 </html>
-
-
-
-
-

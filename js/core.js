@@ -1,4 +1,4 @@
-function money(value) {
+﻿function money(value) {
   return new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR"
