@@ -10,10 +10,19 @@
   
   <title>Capri Exo - Contact et avis</title>
   <meta name="description" content="Contactez Capri Exo, laissez un avis client avec une note sur 5 et retrouvez les informations utiles du stand de marché.">
-  
-  <link rel="stylesheet" href="style.css">
-  
-  <link rel="icon" href="images/logocapriexo.png">
+  <!-- Feuilles de style separees ; responsive.css reste charge en dernier. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/suivi.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<link rel="icon" href="images/logocapriexo.png">
   <script defer src="js/data.js"></script>
   <script defer src="js/core.js"></script>
   <script defer src="js/search.js"></script>
@@ -23,7 +32,7 @@
   <script defer src="js/main.js"></script>
 </head>
 
-<body class="page-standard">
+<body class="page-standard page-contact">
   
   <!-- Navigation principale -->
   
@@ -68,30 +77,39 @@
       
       <p class="eyebrow">Échangeons</p>
       
-      <h1>Contact et avis clients</h1>
+      <h1>Une question ou une expérience à partager ?</h1>
       
-      <p>Posez une question, demandez un renseignement ou partagez simplement votre expérience après achat.</p>
+      <p>Écrivez-nous pour un produit ou une commande, puis partagez votre avis après votre passage au stand.</p>
     </section>
 
     
-    <section class="contact-layout">
+    <section class="contact-layout contact-grid">
       
-      <article class="content-card location-card">
-        
-        <h2>Informations utiles</h2>
-        
-        <p><strong>Retrait :</strong> possible à Cergy ou à Mantes-la-Jolie</p>
-        <p><strong>Téléphone :</strong> numéro à ajouter</p>
-        <p><strong>Email :</strong> email à ajouter</p>
-        <p><strong>Horaires :</strong> horaires à personnaliser</p>
-        
-        <p class="muted">
-          Cette section reste simple, tout en rappelant que les retraits peuvent se faire sur les deux marchés.
-        </p>
+      <article class="content-card contact-info-card">
+        <div>
+          <p class="eyebrow">Avant de nous écrire</p>
+          <h2>Les informations essentielles</h2>
+          <p>Préparez votre demande en indiquant le produit recherché et le marché qui vous convient.</p>
+        </div>
+
+        <ul class="contact-highlights">
+          <li>
+            <strong>Deux points de retrait</strong>
+            <span>Cergy ou Mantes-la-Jolie</span>
+          </li>
+          <li>
+            <strong>Commande précise</strong>
+            <span>Quantité, poids et produit souhaité</span>
+          </li>
+          <li>
+            <strong>Réponse centralisée</strong>
+            <span>Votre demande reste liée au bon marché</span>
+          </li>
+        </ul>
       </article>
 
       
-      <article class="content-card">
+      <article class="content-card contact-form-card">
         
         <h2>Nous contacter</h2>
         
@@ -130,7 +148,7 @@
       </article>
 
       
-      <article class="content-card">
+      <article class="content-card review-form-card">
         
         <h2>Laisser un avis</h2>
         <p id="reviewSummary" class="muted"></p>

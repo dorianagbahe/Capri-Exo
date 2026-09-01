@@ -10,10 +10,19 @@
   
   <title>Capri Exo - Panier</title>
   <meta name="description" content="Retrouvez votre panier Capri Exo, modifiez les quantités, ajustez le poids, supprimez des articles et préparez votre commande.">
-  
-  <link rel="stylesheet" href="style.css">
-  
-  <link rel="icon" href="images/logocapriexo.png">
+  <!-- Feuilles de style separees ; responsive.css reste charge en dernier. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/suivi.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<link rel="icon" href="images/logocapriexo.png">
   <script defer src="js/data.js"></script>
   <script defer src="js/core.js"></script>
   <script defer src="js/search.js"></script>
@@ -23,7 +32,7 @@
   <script defer src="js/main.js"></script>
 </head>
 
-<body class="page-standard">
+<body class="page-standard page-cart">
   
   <!-- Navigation principale -->
   
@@ -71,6 +80,10 @@
       <h1>Mon panier</h1>
       
       <p>Modifiez les quantités, ajustez le poids et vérifiez votre sélection avant de finaliser la commande.</p>
+
+      <div class="page-actions">
+        <a class="button button-secondary" href="index.html#catalogue-produits">Continuer mes achats</a>
+      </div>
     </section>
 
     

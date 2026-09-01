@@ -1,0 +1,70 @@
+/* ==========================================================================
+   CAPRI EXO - ANIMATIONS
+   ========================================================================== */
+
+@keyframes pageReveal {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes contentReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes frameSheen {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(1.5%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body::before,
+  body .site-nav,
+  body main,
+  body .site-footer,
+  .reveal-on-scroll.reveal-ready,
+  .photo-frame::before {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  body.page-leaving .site-nav,
+  body.page-leaving main,
+  body.page-leaving .site-footer,
+  .reveal-on-scroll.reveal-ready {
+    transition: none;
+  }
+
+  .photo-frame,
+  .content-card,
+  .feature-card,
+  .market-location-card,
+  .review-card,
+  .summary-card,
+  .info-panel,
+  .product-card,
+  .footer-socials a {
+    transition: none;
+  }
+}

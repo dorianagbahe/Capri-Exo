@@ -44,6 +44,37 @@ function refreshProductWhatsAppLink(productId) {
   );
 }
 
+// Remplace proprement une image produit introuvable par les initiales du produit.
+function setupProductImageFallbacks() {
+  document.addEventListener("error", (event) => {
+    const image = event.target;
+
+    if (!(image instanceof HTMLImageElement)) {
+      return;
+    }
+
+    if (image.classList.contains("product-media-image")) {
+      const media = image.closest(".product-media, .detail-media");
+      media?.classList.remove("has-image");
+      image.remove();
+      return;
+    }
+
+    if (image.classList.contains("cart-media-image")) {
+      const media = image.closest(".cart-media");
+      if (!media) {
+        return;
+      }
+
+      const fallback = document.createElement("span");
+      fallback.className = "cart-media-fallback";
+      fallback.textContent = media.dataset.abbr || "CE";
+      media.classList.remove("has-image");
+      media.replaceChildren(fallback);
+    }
+  }, true);
+}
+
 // Lance la petite transition de sortie avant de changer de page.
 function navigateWithTransition(url) {
   if (pageTransitionRunning) {
@@ -140,10 +171,11 @@ function initGlobalActions() {
     }
 
     if (addButton) {
+      const originalLabel = addButton.textContent.trim();
       addToCart(addButton.dataset.addCart, addButton);
-      addButton.textContent = "Ajouté";
+      addButton.textContent = "Ajouté au panier";
       window.setTimeout(() => {
-        addButton.textContent = "Ajouter";
+        addButton.textContent = originalLabel;
       }, 900);
       return;
     }
@@ -322,6 +354,7 @@ function initGlobalActions() {
 
 // Point d'entree principal : on prepare la recherche, l'affichage et les interactions globales.
 async function init() {
+  setupProductImageFallbacks();
   await hydrateCatalogFromApi();
   updateCatalogSearchFromUrl();
   renderCurrentPage();

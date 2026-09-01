@@ -1,0 +1,566 @@
+/* ==========================================================================
+   CAPRI EXO - RESPONSIVE MOBILE ET TABLETTE
+   ========================================================================== */
+
+@media (max-width: 1120px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .compact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-layout,
+  .feature-grid,
+  .about-grid,
+  .about-gallery,
+  .market-locations-grid,
+  .story-section,
+  .cart-layout,
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-media {
+    position: relative;
+    top: auto;
+    min-height: 500px;
+  }
+
+  .summary-card {
+    position: static;
+    top: auto;
+  }
+
+  .contact-grid,
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 920px) {
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body {
+    padding-top: 112px;
+  }
+
+  .site-nav {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+    transform: none;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "brand toggle"
+      "links links";
+    gap: 14px;
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .nav-toggle {
+    grid-area: toggle;
+    display: inline-flex;
+    justify-self: end;
+  }
+
+  .nav-links {
+    grid-area: links;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: 100%;
+    justify-self: stretch;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.28s ease, opacity 0.22s ease, padding-top 0.22s ease;
+  }
+
+  .nav-links a,
+  .nav-login-link {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 13px 14px;
+    border-radius: 18px;
+  }
+
+  .nav-login-link {
+    margin-left: 0;
+  }
+
+  .site-nav.is-open .nav-links {
+    max-height: 420px;
+    opacity: 1;
+    padding-top: 4px;
+    pointer-events: auto;
+  }
+
+  .site-nav.is-open .nav-toggle-bars span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .site-nav.is-open .nav-toggle-bars span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-nav.is-open .nav-toggle-bars span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 44px;
+  }
+
+  .hero h1 {
+    max-width: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-frame-large {
+    min-height: 280px;
+  }
+
+  .photo-frame-medium {
+    min-height: 220px;
+  }
+
+  .hero-actions-top {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .home-section-head {
+    align-items: start;
+  }
+
+  .sort-row {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .summary-breakdown-list li {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    padding-top: 104px;
+  }
+
+  .feature-card,
+  .content-card,
+  .info-panel,
+  .summary-card {
+    padding: 24px;
+  }
+
+  .site-nav {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    width: auto;
+    max-width: calc(100% - 12px);
+    box-sizing: border-box;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .brand {
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .page-banner {
+    padding: 26px 0 22px;
+  }
+
+  .page-banner h1 {
+    font-size: 38px;
+  }
+
+  .page-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-actions .button {
+    width: 100%;
+  }
+
+  .about-grid,
+  .contact-grid,
+  .contact-info-card,
+  .login-layout,
+  .review-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-visual .photo-frame {
+    min-height: 300px;
+  }
+
+  .contact-form-card,
+  .review-form-card,
+  .login-card,
+  .login-benefits {
+    padding: 24px;
+  }
+
+  .catalog-search-box {
+    top: 102px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .catalog-tools {
+    gap: 14px;
+  }
+
+  .filter-row {
+    justify-content: stretch;
+  }
+
+  .filter-button {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
+
+  .sort-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .product-grid,
+  .compact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions,
+  .hero-actions-top {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .hero-actions .button,
+  .hero-actions-top .button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 12px 14px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .hero-text {
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .hero-quick-links {
+    margin-bottom: 16px;
+  }
+
+  .quick-link {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .home-section-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-section-head .button {
+    width: 100%;
+  }
+
+  .hero-photo-panel {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .photo-frame-large {
+    min-height: 240px;
+  }
+
+  .product-info {
+    padding: 24px;
+  }
+
+  .detail-media {
+    min-height: 400px;
+    padding: 22px;
+  }
+
+  .product-subtitle {
+    font-size: 21px;
+  }
+
+  .product-media {
+    aspect-ratio: 1 / 1;
+    padding: 14px;
+  }
+
+  .cart-item {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .cart-media {
+    min-height: 84px;
+  }
+
+  .cart-item-footer {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .summary-total {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer {
+    margin-top: 28px;
+  }
+
+  .footer-main {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+
+  .market-photo-left {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 540px) {
+  .feature-card,
+  .content-card,
+  .info-panel,
+  .summary-card {
+    padding: 20px;
+  }
+
+  body {
+    padding-top: 98px;
+  }
+
+  .product-grid,
+  .compact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions,
+  .detail-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .brand-text small {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-links a,
+  .nav-login-link {
+    padding: 12px 13px;
+  }
+
+  .site-nav {
+    left: 5px;
+    right: 5px;
+    max-width: calc(100% - 10px);
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 7px;
+  }
+
+  .nav-links a,
+  .nav-login-link {
+    font-size: 12px;
+    padding: 11px 12px;
+    border-radius: 16px;
+  }
+
+  .page-banner h1 {
+    font-size: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 11vw, 48px);
+  }
+
+  .hero-copy,
+  .product-info,
+  .summary-card,
+  .modal-card {
+    gap: 16px;
+  }
+
+  .hero-quick-links {
+    gap: 8px;
+  }
+
+  .quick-link {
+    flex: 1 1 100%;
+  }
+
+  .hero-actions,
+  .hero-actions-top {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .hero-actions .button,
+  .hero-actions-top .button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    padding: 11px 10px;
+    font-size: 12px;
+  }
+
+  .hero-photo-panel {
+    gap: 10px;
+  }
+
+  .photo-frame-large {
+    min-height: 210px;
+  }
+
+  .photo-caption {
+    font-size: 14px;
+  }
+
+  .market-locations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .page-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero-visual .photo-frame {
+    min-height: 230px;
+  }
+
+  .login-benefits h2 {
+    font-size: 27px;
+  }
+
+  .cart-item {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .cart-media {
+    min-height: 72px;
+  }
+
+  .cart-item h2 {
+    font-size: 18px;
+  }
+
+  .photo-placeholder {
+    padding: 22px;
+  }
+
+  .button,
+  .add-button,
+  .remove-button {
+    width: 100%;
+  }
+
+  .back-to-top {
+    right: 14px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .sort-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .summary-total strong {
+    font-size: 28px;
+  }
+
+  .site-footer {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+}

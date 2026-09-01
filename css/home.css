@@ -1,0 +1,425 @@
+/* ==========================================================================
+   CAPRI EXO - PAGE D'ACCUEIL
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: center;
+  padding: 22px 0 18px;
+}
+
+.hero h1 {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(38px, 6.2vw, 66px);
+  line-height: 1.02;
+}
+
+.hero-text {
+  max-width: 600px;
+  margin: 12px 0 16px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.hero-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--pill-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.quick-link:hover {
+  transform: translateY(-1px);
+  border-color: var(--pill-border-strong);
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow-hover);
+}
+
+.page-home .hero-actions-top .button-primary,
+.page-home .hero-actions-top .button-secondary,
+.page-home .home-products-section .home-section-head .button-primary,
+.page-home .home-products-section .home-section-head .button-secondary {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border: 1px solid var(--pill-border);
+  box-shadow: var(--pill-shadow);
+}
+
+.page-home .hero-actions-top .button-primary:hover,
+.page-home .hero-actions-top .button-secondary:hover,
+.page-home .home-products-section .home-section-head .button-primary:hover,
+.page-home .home-products-section .home-section-head .button-secondary:hover {
+  background: var(--pill-bg-hover);
+  color: var(--pill-text);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-points,
+.plain-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-points li,
+.plain-list li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.hero-points li::before,
+.plain-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.8em;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #000000;
+}
+
+.hero-visual {
+  display: grid;
+  gap: var(--space-content-gap);
+}
+
+.hero-photo-panel {
+  display: grid;
+  gap: var(--space-tight-gap);
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(238, 238, 236, 0.95));
+  box-shadow: 0 22px 44px rgba(53, 33, 24, 0.14);
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.16), transparent 42%, rgba(0, 0, 0, 0.06));
+  pointer-events: none;
+  animation: frameSheen 9s ease-in-out infinite;
+}
+
+.photo-frame-large {
+  min-height: 340px;
+}
+
+.home-wide-photo {
+  min-height: 400px;
+}
+
+.photo-frame-medium {
+  min-height: 250px;
+}
+
+.photo-frame-small {
+  min-height: 180px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  position: relative;
+  z-index: 1;
+  min-height: inherit;
+  height: 100%;
+  display: grid;
+  align-content: end;
+  gap: 10px;
+  padding: 28px;
+}
+
+.photo-placeholder-kicker {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 12px 22px rgba(58, 36, 25, 0.1);
+}
+
+.photo-placeholder strong {
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.18;
+}
+
+.photo-placeholder p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.photo-placeholder span {
+  font-weight: 700;
+}
+
+.photo-caption {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.media-badge,
+.card-kicker {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(34, 27, 24, 0.08);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.feature-grid,
+.about-grid,
+.contact-layout {
+  display: grid;
+  gap: var(--space-block-gap);
+}
+
+.section {
+  padding: var(--space-section-y) 0 28px;
+}
+
+.catalog-search-box {
+  position: sticky;
+  top: 108px;
+  z-index: 1500;
+  margin: 0 auto 20px;
+  width: min(100%, 680px);
+}
+
+.feature-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.story-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.market-side {
+  display: grid;
+  gap: 14px;
+}
+
+.market-section-heading {
+  margin-bottom: 2px;
+}
+
+.market-locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-block-gap);
+}
+
+.market-location-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.market-location-card .photo-frame {
+  position: relative;
+  display: block;
+  padding: 0;
+  line-height: 0;
+  background: linear-gradient(180deg, #ffffff, #f1f1ef);
+}
+
+.market-location-card .photo-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  margin: 0;
+}
+
+.market-location-content {
+  display: grid;
+  gap: 14px;
+  padding: var(--space-card-padding);
+}
+
+.market-location-content h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.market-location-summary,
+.market-location-note {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.market-location-meta {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.market-location-meta li {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.market-photo-left {
+  width: 100%;
+  min-height: 360px;
+  margin-top: 16px;
+  margin-left: 0;
+}
+
+.info-line {
+  margin: 0 0 10px;
+}
+
+.home-products-section {
+  display: grid;
+  gap: 24px;
+}
+
+.home-info-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.home-products-section-alt {
+  padding-top: 18px;
+}
+
+.home-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.home-section-head .section-heading {
+  margin: 0;
+  text-align: left;
+}
+
+.home-section-head .section-heading p:last-child {
+  margin-left: 0;
+}
+
+.hero-copy {
+  display: grid;
+  align-content: start;
+}
+
+.hero-actions-top {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 14px;
+}
+
+.page-home .section {
+  padding-top: 38px;
+}
+
+.page-home .hero + .section {
+  padding-top: 20px;
+}
+
+.home-catalog-section .section-heading,
+.home-about-section .section-heading {
+  margin-bottom: 22px;
+}
+
+.home-catalog-section .catalog-tools {
+  margin-bottom: 28px;
+}
+
+.store-checklist {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store-checklist li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.store-checklist li::before {
+  content: "";
+  position: absolute;
+  top: 0.8em;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #000000;
+}
+
+.info-panel .button {
+  margin-top: 10px;
+}

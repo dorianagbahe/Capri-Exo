@@ -11,10 +11,19 @@
   <title>Capri Exo - À propos</title>
   
   <meta name="description" content="Découvrez l'histoire de Capri Exo, la vision du stand de marché et les informations utiles pour relier le site à la présence sur le marché.">
-  
-  <link rel="stylesheet" href="style.css">
-  
-  <link rel="icon" href="images/logocapriexo.png">
+  <!-- Feuilles de style separees ; responsive.css reste charge en dernier. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/suivi.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<link rel="icon" href="images/logocapriexo.png">
   <script defer src="js/data.js"></script>
   <script defer src="js/core.js"></script>
   <script defer src="js/search.js"></script>
@@ -24,7 +33,7 @@
   <script defer src="js/main.js"></script>
 </head>
 
-<body class="page-standard">
+<body class="page-standard page-about">
   
   <!-- Navigation principale -->
   
@@ -69,9 +78,14 @@
       
       <p class="eyebrow">À propos de Capri Exo</p>
       
-      <h1>Un site pensé pour rapprocher le stand et les clients</h1>
+      <h1>Le marché Capri Exo, plus simple à retrouver en ligne</h1>
       
-      <p>Capri Exo relie plus simplement le stand, les produits et les clients, avec une présentation plus claire et plus pratique.</p>
+      <p>Découvrez notre histoire, nos valeurs et les marchés où retrouver notre sélection de produits.</p>
+
+      <div class="page-actions">
+        <a class="button button-primary" href="index.html#catalogue-produits">Voir les produits</a>
+        <a class="button button-secondary" href="contact.html">Nous contacter</a>
+      </div>
     </section>
 
     <section class="about-hero-visual" aria-label="Emplacement photo principal à propos">
@@ -170,31 +184,6 @@
       <div id="aboutMarketsGrid" class="market-locations-grid" aria-label="Marchés Capri Exo"></div>
     </section>
 
-    <section class="about-gallery" aria-label="Galerie à propos">
-      <div class="photo-frame photo-frame-small">
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-kicker">Produits</span>
-          <strong>Sélection mise en avant</strong>
-          <p>Ajoutez ici une photo de produits représentatifs du stand.</p>
-        </div>
-      </div>
-
-      <div class="photo-frame photo-frame-small">
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-kicker">Marché</span>
-          <strong>Vue du stand sur place</strong>
-          <p>Ajoutez ici une photo qui montre l'ambiance réelle du marché.</p>
-        </div>
-      </div>
-
-      <div class="photo-frame photo-frame-small">
-        <div class="photo-placeholder">
-          <span class="photo-placeholder-kicker">Équipe</span>
-          <strong>Accueil et présence humaine</strong>
-          <p>Ajoutez ici une photo qui donne un visage plus humain à Capri Exo.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   

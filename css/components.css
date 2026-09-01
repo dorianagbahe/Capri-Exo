@@ -1,0 +1,290 @@
+/* ==========================================================================
+   CAPRI EXO - COMPOSANTS COMMUNS
+   ========================================================================== */
+
+/* Boutons et formulaires */
+
+.form-stack input:focus,
+.form-stack select:focus,
+.form-stack textarea:focus,
+.quantity-control input:focus,
+.cart-control input:focus,
+.summary-fields input:focus,
+.summary-fields select:focus,
+.summary-fields textarea:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.28);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.search-box button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.button {
+  padding: 13px 18px;
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  box-shadow: var(--pill-shadow);
+  font-weight: 700;
+}
+
+.button:hover,
+.icon-button:hover,
+.filter-button:hover,
+.add-button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
+  box-shadow: var(--pill-shadow);
+}
+
+.button-secondary {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
+}
+
+.button-whatsapp {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-color: var(--pill-border);
+  box-shadow: var(--pill-shadow);
+}
+
+.button:hover {
+  background: var(--pill-bg-hover);
+  border-color: var(--pill-border-strong);
+  box-shadow: var(--pill-shadow-hover);
+}
+
+button:disabled,
+.button:disabled,
+.add-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.quantity-control label,
+.cart-control label,
+.form-stack label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.quantity-control input,
+.cart-control input,
+.form-stack input,
+.form-stack select,
+.form-stack textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+}
+
+.form-stack textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-message {
+  min-height: 24px;
+  margin: 12px 0 0;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+/* Blocs communs et mise en page */
+
+.hero,
+.section,
+.catalog-page,
+.detail-page,
+.contact-page,
+.cart-page,
+.about-page,
+.legal-page {
+  width: min(calc(100% - 32px), var(--max-width));
+  margin: 0 auto;
+}
+
+.content-card,
+.feature-card,
+.product-card,
+.review-card,
+.cart-item,
+.summary-card,
+.modal-card,
+.info-panel {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 249, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.photo-frame,
+.content-card,
+.feature-card,
+.market-location-card,
+.review-card,
+.summary-card,
+.info-panel {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.page-home .photo-frame:hover,
+.page-home .content-card:hover,
+.page-home .feature-card:hover,
+.page-home .market-location-card:hover,
+.page-home .info-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.feature-card,
+.content-card,
+.info-panel,
+.summary-card {
+  padding: var(--space-card-padding);
+}
+
+.feature-card h3,
+.content-card h2,
+.info-panel h3,
+.summary-card h2,
+.modal-card h2 {
+  margin: 0 0 14px;
+  font-size: clamp(21px, 2.1vw, 30px);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 0 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--pill-border);
+  border-radius: 999px;
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: var(--pill-shadow);
+}
+
+.hero h1,
+.page-banner h1,
+.section-heading h2,
+.product-info h1 {
+  margin: 0;
+  line-height: 1.02;
+}
+
+.hero-text,
+.page-banner p,
+.story-copy p,
+.content-card p,
+.product-description,
+.info-panel p {
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  display: grid;
+  gap: var(--space-tight-gap);
+  text-align: center;
+}
+
+.section-heading-left,
+.page-banner-left {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+  justify-items: start;
+}
+
+.section-heading .eyebrow,
+.page-banner .eyebrow {
+  margin-bottom: 0;
+}
+
+.section-heading:not(.section-heading-left) .eyebrow,
+.page-banner:not(.page-banner-left) .eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 4vw, 46px);
+  text-wrap: balance;
+}
+
+.page-banner h1,
+.section-heading h2,
+.product-info h1 {
+  color: #1c1512;
+}
+
+.page-banner p:last-child,
+.section-heading p:last-child {
+  max-width: 62ch;
+  margin: 0 auto;
+}
+
+.page-banner-left p:last-child,
+.section-heading-left p:last-child {
+  margin-left: 0;
+}
+
+.info-note,
+.muted {
+  color: var(--text);
+}
+
+.page-banner p:last-child,
+.content-card > p,
+.legal-stack p,
+.contact-layout p,
+.summary-card > p {
+  max-width: 60ch;
+}
+
+.empty-state {
+  padding: 38px 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 253, 249, 0.9);
+  box-shadow: var(--shadow);
+  text-align: center;
+}

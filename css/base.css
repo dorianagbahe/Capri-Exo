@@ -1,0 +1,82 @@
+/* ==========================================================================
+   CAPRI EXO - BASE ET VARIABLES
+   ========================================================================== */
+
+:root {
+  --bg: #f5f5f4;
+  --surface-soft: #eeeeec;
+  --text: #141414;
+  --muted: #5f5f5f;
+  --line: rgba(0, 0, 0, 0.12);
+  --primary: #111111;
+  --primary-dark: #000000;
+  --accent: #3d3d3d;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+  --radius-lg: 24px;
+  --max-width: 1180px;
+  --pill-bg: rgba(255, 255, 255, 0.96);
+  --pill-bg-hover: #ffffff;
+  --pill-border: rgba(0, 0, 0, 0.14);
+  --pill-border-strong: rgba(0, 0, 0, 0.18);
+  --pill-text: #111111;
+  --pill-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+  --pill-shadow-hover: 0 16px 28px rgba(0, 0, 0, 0.12);
+  --space-section-y: 48px;
+  --space-block-gap: 24px;
+  --space-content-gap: 18px;
+  --space-tight-gap: 12px;
+  --space-card-padding: 24px;
+  --space-card-padding-sm: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 132px;
+}
+
+body {
+  margin: 0;
+  padding-top: 148px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(0, 0, 0, 0.05), transparent 28%),
+    radial-gradient(circle at left center, rgba(0, 0, 0, 0.04), transparent 24%),
+    var(--bg);
+  color: var(--text);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: rgba(245, 245, 244, 0.94);
+  pointer-events: none;
+  animation: pageReveal 0.65s ease forwards;
+}
+
+body.page-leaving::before {
+  animation: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+body .site-nav,
+body main,
+body .site-footer {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: contentReveal 0.7s ease forwards;
+}
+
+body .site-nav {
+  transform: translateY(-12px);
+  animation-duration: 0.6s;
+}

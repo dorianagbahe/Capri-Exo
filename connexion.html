@@ -5,8 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capri Exo - Connexion</title>
   <meta name="description" content="Connectez-vous à votre espace Capri Exo pour retrouver vos informations, commandes et favoris lorsque cette partie sera activée.">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="images/logocapriexo.png">
+  <!-- Feuilles de style separees ; responsive.css reste charge en dernier. -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/suivi.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+<link rel="icon" href="images/logocapriexo.png">
   <script defer src="js/data.js"></script>
   <script defer src="js/core.js"></script>
   <script defer src="js/search.js"></script>
@@ -15,7 +26,7 @@
   <script defer src="js/contact.js"></script>
   <script defer src="js/main.js"></script>
 </head>
-<body class="page-standard">
+<body class="page-standard page-login">
   <!-- Navigation principale -->
   <nav class="site-nav">
     <a href="index.html" class="brand" aria-label="Accueil Capri Exo">
@@ -38,40 +49,56 @@
 
   <!-- Contenu principal -->
 
-  <main class="contact-page">
+  <main class="login-page">
     <section class="page-banner page-banner-left">
       <p class="eyebrow">Espace client</p>
-      <h1>Connexion</h1>
-      <p>Cette page est prête pour accueillir plus tard une vraie connexion client reliée au back-end.</p>
+      <h1>Retrouvez bientôt votre espace Capri Exo</h1>
+      <p>La connexion client est en préparation. Le catalogue et la commande restent accessibles sans compte.</p>
     </section>
 
-    <section class="contact-layout">
-      <article class="content-card">
+    <section class="login-layout">
+      <article class="content-card login-card">
+        <p class="eyebrow">Connexion</p>
         <h2>Se connecter</h2>
-        <form class="form-stack">
+        <p class="login-intro">Ce formulaire sera activé lorsque l'espace client sécurisé sera relié au back-end.</p>
+
+        <form class="form-stack" aria-label="Formulaire de connexion à venir">
           <label>
             Email
-            <input type="email" placeholder="votre@email.com">
+            <input type="email" autocomplete="email" placeholder="votre@email.com" disabled>
           </label>
 
           <label>
             Mot de passe
-            <input type="password" placeholder="Votre mot de passe">
+            <input type="password" autocomplete="current-password" placeholder="Votre mot de passe" disabled>
           </label>
 
-          <button class="button button-primary" type="button">Se connecter</button>
+          <button class="button button-primary" type="button" disabled>Connexion bientôt disponible</button>
         </form>
       </article>
 
-      <article class="content-card">
-        <h2>Créer un compte</h2>
-        <p>Quand la partie back-end sera prête, cet espace pourra servir à créer un compte client et à retrouver vos commandes, vos favoris et vos informations personnelles.</p>
-      </article>
-
-      <article class="content-card">
-        <h2>Accès futur</h2>
-        <p>Vous pourrez ensuite connecter cette page à une vraie base de données et à un système d'authentification sécurisé, sans changer la structure visuelle du site.</p>
-      </article>
+      <aside class="login-benefits" aria-label="Fonctionnalités de l'espace client">
+        <p class="eyebrow">À venir</p>
+        <h2>Un espace utile, sans compliquer vos achats</h2>
+        <ul class="login-benefits-list">
+          <li>
+            <strong>Commandes</strong>
+            <span>Retrouver vos confirmations et vos informations de retrait.</span>
+          </li>
+          <li>
+            <strong>Favoris</strong>
+            <span>Conserver les produits que vous consultez régulièrement.</span>
+          </li>
+          <li>
+            <strong>Informations personnelles</strong>
+            <span>Éviter de remplir les mêmes renseignements à chaque commande.</span>
+          </li>
+        </ul>
+        <div class="page-actions">
+          <a class="button button-primary" href="index.html#catalogue-produits">Voir les produits</a>
+          <a class="button button-secondary" href="contact.html">Nous contacter</a>
+        </div>
+      </aside>
     </section>
   </main>
 
