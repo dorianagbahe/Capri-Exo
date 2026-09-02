@@ -44,6 +44,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   background:
     radial-gradient(circle at top right, rgba(0, 0, 0, 0.05), transparent 28%),
@@ -72,13 +73,20 @@ body .site-nav,
 body main,
 body .site-footer {
   opacity: 0;
-  transform: translateY(10px);
   animation: contentReveal 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 body .site-nav {
-  transform: translateY(-8px);
+  transform: translate3d(0, -10px, 0);
   animation-duration: 0.36s;
+}
+
+body main {
+  transform: translate3d(22px, 0, 0);
+}
+
+body .site-footer {
+  transform: translate3d(0, 10px, 0);
 }
 
 main {

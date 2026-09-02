@@ -16,7 +16,7 @@
 @keyframes contentReveal {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -47,14 +47,21 @@ body.page-leaving main,
 body.page-leaving .site-footer {
   animation: none;
   opacity: 0;
-  transform: translateY(5px);
   transition:
     opacity 0.16s ease,
     transform 0.16s ease;
 }
 
 body.page-leaving .site-nav {
-  transform: translateY(-4px);
+  transform: translate3d(0, -5px, 0);
+}
+
+body.page-leaving main {
+  transform: translate3d(-14px, 0, 0);
+}
+
+body.page-leaving .site-footer {
+  transform: translate3d(0, 5px, 0);
 }
 
 .reveal-on-scroll.reveal-ready {
