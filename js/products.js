@@ -142,8 +142,6 @@ function renderProductDetail() {
   const visibleTags = (product.tags || []).slice(0, 4);
   target.innerHTML = `
     <article class="product-detail">
-      ${mediaMarkup(product, true)}
-
       <div class="product-info">
         <div class="product-copy-head">
           <p class="eyebrow">${escapeHtml(product.category)}</p>
@@ -151,52 +149,63 @@ function renderProductDetail() {
           <p class="product-subtitle">${money(product.priceValue)} ${escapeHtml(unitDisplay(product))}</p>
         </div>
 
-        <div class="detail-meta-stack">
-          <div class="product-tag-row detail-tag-row">
-            ${visibleTags.map(productTagMarkup).join("")}
-          </div>
-          <div class="detail-status-row">
-            ${availabilityBadgeMarkup(product)}
-            <span class="detail-availability-text">${escapeHtml(product.availability)}</span>
-          </div>
-        </div>
-
-        <p class="product-description product-description-lead">${escapeHtml(product.description)}</p>
-
-        <div class="detail-grid">
-          ${detailItemMarkup("Conservation", product.storage)}
-          ${detailItemMarkup("Disponibilité", product.availability)}
-          ${detailItemMarkup("Commande", product.orderNote)}
-          ${detailItemMarkup("Conseil", product.tip)}
-          ${detailItemMarkup("Origine", product.origin)}
-          ${detailItemMarkup("Niveau de piquant", product.spiceLevel)}
-          ${detailItemMarkup("Produit conseillé avec", product.pairing)}
-          ${detailItemMarkup("Format recommandé", product.recommendedFormat)}
-          ${detailItemMarkup("Saison", product.seasonLabel)}
-          ${detailItemMarkup("Retrait possible", marketPickupSummary())}
+        <div class="detail-status-row">
+          ${availabilityBadgeMarkup(product)}
+          <span class="detail-availability-text">${escapeHtml(product.availability)}</span>
         </div>
 
         <div class="detail-purchase-panel">
-          <p class="detail-purchase-title">Préparer ma commande</p>
+          <div class="detail-purchase-heading">
+            <p class="detail-purchase-title">Préparer ma commande</p>
+            <p>Choisissez la quantité souhaitée avant d'ajouter le produit.</p>
+          </div>
           ${productControlMarkup(product)}
 
           <div class="detail-actions">
             <button class="button button-primary" type="button" data-add-cart="${product.id}" ${availability.canOrder ? "" : "disabled"}>
               ${availability.canOrder ? "Ajouter au panier" : "Indisponible"}
             </button>
-            <button class="button button-secondary" type="button" data-favorite="${product.id}">
-              ${favoriteActive(product.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
-            </button>
             <a class="button button-secondary" href="panier.html">
               Voir le panier
             </a>
+            <button class="button button-secondary" type="button" data-favorite="${product.id}">
+              ${favoriteActive(product.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
+            </button>
             <a class="button button-whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-product-whatsapp="${product.id}">
               Commander sur WhatsApp
             </a>
           </div>
         </div>
       </div>
+
+      ${mediaMarkup(product, true)}
     </article>
+
+    <section class="product-information" aria-labelledby="productInformationTitle">
+      <div class="product-information-head">
+        <p class="eyebrow">Informations sur le produit</p>
+        <h2 id="productInformationTitle">À propos de ${escapeHtml(product.name)}</h2>
+        <p class="product-description product-description-lead">${escapeHtml(product.description)}</p>
+        ${visibleTags.length ? `
+          <div class="product-tag-row detail-tag-row">
+            ${visibleTags.map(productTagMarkup).join("")}
+          </div>
+        ` : ""}
+      </div>
+
+      <div class="detail-grid">
+        ${detailItemMarkup("Conservation", product.storage)}
+        ${detailItemMarkup("Disponibilité", product.availability)}
+        ${detailItemMarkup("Commande", product.orderNote)}
+        ${detailItemMarkup("Conseil", product.tip)}
+        ${detailItemMarkup("Origine", product.origin)}
+        ${detailItemMarkup("Niveau de piquant", product.spiceLevel)}
+        ${detailItemMarkup("Produit conseillé avec", product.pairing)}
+        ${detailItemMarkup("Format recommandé", product.recommendedFormat)}
+        ${detailItemMarkup("Saison", product.seasonLabel)}
+        ${detailItemMarkup("Retrait possible", marketPickupSummary())}
+      </div>
+    </section>
   `;
 
   if (relatedTarget) {

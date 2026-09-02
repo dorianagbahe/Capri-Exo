@@ -22,6 +22,12 @@
     grid-template-columns: 1fr;
   }
 
+  .product-detail {
+    grid-template-areas:
+      "purchase"
+      "media";
+  }
+
   .detail-media {
     position: relative;
     top: auto;
@@ -333,8 +339,13 @@
   }
 
   .detail-media {
-    min-height: 400px;
+    min-height: 340px;
     padding: 22px;
+  }
+
+  .product-information {
+    gap: 20px;
+    padding-top: 28px;
   }
 
   .product-subtitle {
@@ -412,10 +423,14 @@
     grid-template-columns: 1fr;
   }
 
-  .hero-actions,
-  .detail-actions {
+  .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .detail-actions {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .brand-text small {
@@ -464,6 +479,83 @@
   .summary-card,
   .modal-card {
     gap: 16px;
+  }
+
+  .detail-page {
+    padding-top: 20px;
+  }
+
+  .back-link {
+    margin-bottom: 16px;
+  }
+
+  .product-info {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .product-info h1 {
+    font-size: 30px;
+    line-height: 1.12;
+  }
+
+  .product-copy-head {
+    gap: 7px;
+    padding-bottom: 14px;
+  }
+
+  .detail-status-row {
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 13px;
+  }
+
+  .detail-availability-text {
+    font-size: 12px;
+  }
+
+  .detail-purchase-panel {
+    gap: 13px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .detail-purchase-title {
+    font-size: 17px;
+  }
+
+  .detail-actions .button {
+    min-height: 48px;
+  }
+
+  .detail-media {
+    min-height: 280px;
+    aspect-ratio: 1 / 1;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .product-information {
+    gap: 18px;
+    padding-top: 24px;
+  }
+
+  .product-information-head h2 {
+    font-size: 26px;
+  }
+
+  .product-description-lead {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .detail-grid {
+    gap: 10px;
+  }
+
+  .detail-grid article {
+    padding: 14px;
+    border-radius: 14px;
   }
 
   .hero-quick-links {
