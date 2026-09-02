@@ -75,9 +75,14 @@ function setupProductImageFallbacks() {
   }, true);
 }
 
-// Lance la petite transition de sortie avant de changer de page.
+// Lance une transition courte sans donner l'impression que le clic est bloqué.
 function navigateWithTransition(url) {
   if (pageTransitionRunning) {
+    return;
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.location.href = url;
     return;
   }
 
@@ -86,7 +91,7 @@ function navigateWithTransition(url) {
 
   window.setTimeout(() => {
     window.location.href = url;
-  }, 280);
+  }, 170);
 }
 
 function isInternalLink(link) {

@@ -33,12 +33,58 @@
   }
 }
 
+/* Transitions communes à toutes les pages. */
+body main {
+  animation-delay: 0.02s;
+}
+
+body .site-footer {
+  animation-delay: 0.04s;
+}
+
+body.page-leaving .site-nav,
+body.page-leaving main,
+body.page-leaving .site-footer {
+  animation: none;
+  opacity: 0;
+  transform: translateY(5px);
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease;
+}
+
+body.page-leaving .site-nav {
+  transform: translateY(-4px);
+}
+
+.reveal-on-scroll.reveal-ready {
+  --reveal-y: 18px;
+  --reveal-scale: 0.996;
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.reveal-on-scroll.reveal-ready.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.reveal-card.reveal-ready {
+  --reveal-y: 12px;
+  --reveal-scale: 0.998;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  body::before,
   body .site-nav,
   body main,
   body .site-footer,
@@ -47,6 +93,12 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+
+  body::before {
+    animation: none;
+    opacity: 0;
+    visibility: hidden;
   }
 
   body.page-leaving .site-nav,

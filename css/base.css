@@ -59,24 +59,43 @@ body::before {
   z-index: 5000;
   background: rgba(245, 245, 244, 0.94);
   pointer-events: none;
-  animation: pageReveal 0.65s ease forwards;
+  animation: pageReveal 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 body.page-leaving::before {
   animation: none;
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
 }
 
 body .site-nav,
 body main,
 body .site-footer {
   opacity: 0;
-  transform: translateY(18px);
-  animation: contentReveal 0.7s ease forwards;
+  transform: translateY(10px);
+  animation: contentReveal 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 body .site-nav {
-  transform: translateY(-12px);
-  animation-duration: 0.6s;
+  transform: translateY(-8px);
+  animation-duration: 0.36s;
+}
+
+main {
+  min-height: 72vh;
+  flex: 1 0 auto;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
 }

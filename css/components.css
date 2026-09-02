@@ -45,6 +45,25 @@
   transform: translateY(-2px);
 }
 
+.search-box button,
+.button,
+.icon-button,
+.filter-button,
+.add-button,
+.weight-chip {
+  touch-action: manipulation;
+}
+
+.search-box button:not(:disabled):active,
+.button:not(:disabled):active,
+.icon-button:not(:disabled):active,
+.filter-button:not(:disabled):active,
+.add-button:not(:disabled):active,
+.weight-chip:not(:disabled):active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
+}
+
 .button-primary {
   background: var(--pill-bg);
   color: var(--pill-text);

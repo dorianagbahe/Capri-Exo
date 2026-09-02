@@ -808,7 +808,7 @@ function setupRevealAnimations() {
       node.classList.add("reveal-card");
     }
 
-    node.style.setProperty("--reveal-delay", `${Math.min(index * 45, 280)}ms`);
+    node.style.setProperty("--reveal-delay", `${Math.min(index * 20, 100)}ms`);
   });
 
   if (!("IntersectionObserver" in window)) {
