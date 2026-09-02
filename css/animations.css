@@ -33,6 +33,18 @@
   }
 }
 
+@keyframes mobileDockReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* Transitions communes à toutes les pages. */
 body main {
   animation-delay: 0.02s;
@@ -62,6 +74,12 @@ body.page-leaving main {
 
 body.page-leaving .site-footer {
   transform: translate3d(0, 5px, 0);
+}
+
+body.page-leaving .mobile-product-dock {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition: opacity 0.16s ease, transform 0.16s ease;
 }
 
 .reveal-on-scroll.reveal-ready {
@@ -95,6 +113,7 @@ body.page-leaving .site-footer {
   body .site-nav,
   body main,
   body .site-footer,
+  .mobile-product-dock,
   .reveal-on-scroll.reveal-ready,
   .photo-frame::before {
     animation: none;
@@ -111,6 +130,7 @@ body.page-leaving .site-footer {
   body.page-leaving .site-nav,
   body.page-leaving main,
   body.page-leaving .site-footer,
+  body.page-leaving .mobile-product-dock,
   .reveal-on-scroll.reveal-ready {
     transition: none;
   }

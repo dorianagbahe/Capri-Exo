@@ -134,3 +134,8 @@
   line-height: 1.5;
   opacity: 0.58;
 }
+
+/* Barre d'accès rapide affichée uniquement sur mobile dans la zone produits. */
+.mobile-product-dock {
+  display: none;
+}

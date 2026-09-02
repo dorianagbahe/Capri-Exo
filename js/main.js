@@ -75,6 +75,46 @@ function setupProductImageFallbacks() {
   }, true);
 }
 
+// Ajoute les trois raccourcis essentiels en bas des pages produits sur mobile.
+function setupMobileProductDock() {
+  const isProductArea = document.body.classList.contains("page-home")
+    || Boolean(document.getElementById("ficheProduit"));
+
+  if (!isProductArea || document.querySelector(".mobile-product-dock")) {
+    return;
+  }
+
+  const dock = document.createElement("nav");
+  const homeCurrent = document.body.classList.contains("page-home")
+    ? ' aria-current="page"'
+    : "";
+
+  dock.className = "mobile-product-dock";
+  dock.setAttribute("aria-label", "Navigation rapide mobile");
+  dock.innerHTML = `
+    <a class="mobile-dock-link" href="index.html"${homeCurrent}>
+      <span class="mobile-dock-icon mobile-dock-logo" aria-hidden="true">
+        <img src="images/logocapriexo.png" alt="">
+      </span>
+      <span class="mobile-dock-label">Accueil</span>
+    </a>
+    <a class="mobile-dock-link" href="panier.html">
+      <span class="mobile-dock-icon" aria-hidden="true">
+        <span>🛒</span>
+        <span class="badge-panier mobile-dock-badge">0</span>
+      </span>
+      <span class="mobile-dock-label">Panier</span>
+    </a>
+    <a class="mobile-dock-link" href="connexion.html">
+      <span class="mobile-dock-icon" aria-hidden="true">👤</span>
+      <span class="mobile-dock-label">Connexion</span>
+    </a>
+  `;
+
+  document.body.classList.add("has-mobile-product-dock");
+  document.body.appendChild(dock);
+}
+
 // Lance une transition courte sans donner l'impression que le clic est bloqué.
 function navigateWithTransition(url) {
   if (pageTransitionRunning) {
@@ -360,6 +400,7 @@ function initGlobalActions() {
 // Point d'entree principal : on prepare la recherche, l'affichage et les interactions globales.
 async function init() {
   setupProductImageFallbacks();
+  setupMobileProductDock();
   await hydrateCatalogFromApi();
   updateCatalogSearchFromUrl();
   renderCurrentPage();
