@@ -40,6 +40,7 @@ function prepareProductsForBackend() {
       stockQuantity: product.stockQuantity ?? null,
       stockReserved: Number(product.stockReserved ?? 0),
       stockStatus: product.stockStatus ?? "available",
+      isRare: product.isRare ?? false,
       featuredRank: Number(product.featuredRank ?? index + 1),
       productStatus: product.productStatus ?? "active",
       reviewEnabled: product.reviewEnabled ?? true,
@@ -62,6 +63,7 @@ function productCatalogDefaults() {
       priceLabel: product.priceLabel,
       image: product.image,
       tags: [...product.tags],
+      isRare: product.isRare,
       productStatus: product.productStatus,
       reviewEnabled: product.reviewEnabled,
       featuredRank: product.featuredRank,
@@ -297,21 +299,25 @@ function backendCategoryLabel(category) {
 }
 
 function buildApiAvailability(apiProduct, localProduct) {
-  const stockQuantity = Number(apiProduct.stock_qty ?? localProduct?.stockQuantity ?? 0);
+  const rawStockQuantity = apiProduct.stock_qty ?? localProduct?.stockQuantity ?? null;
+  const stockQuantity = rawStockQuantity === null || rawStockQuantity === ""
+    ? null
+    : Number(rawStockQuantity);
 
-  if (apiProduct.in_stock === false || stockQuantity <= 0) {
+  if (apiProduct.in_stock === false || (stockQuantity !== null && stockQuantity <= 0)) {
     return "Indisponible pour le moment.";
   }
 
-  if (Number.isFinite(stockQuantity) && stockQuantity > 0 && stockQuantity <= 5) {
-    return `Stock limité : ${stockQuantity} ${apiProduct.unit || localProduct?.unitLabel || "article(s)"} disponible(s).`;
+  if (stockQuantity === null || !Number.isFinite(stockQuantity)) {
+    return localProduct?.availability || "Disponible actuellement.";
   }
 
-  if (Number.isFinite(stockQuantity) && stockQuantity > 0) {
-    return `Disponible actuellement : ${stockQuantity} ${apiProduct.unit || localProduct?.unitLabel || "article(s)"} en stock.`;
+  const formattedStock = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 3 }).format(stockQuantity);
+  if (stockQuantity > 0 && stockQuantity <= 5) {
+    return `Stock limité : ${formattedStock} ${apiProduct.unit || localProduct?.unitLabel || "article(s)"} disponible(s).`;
   }
 
-  return localProduct?.availability || "Disponible actuellement.";
+  return `Disponible actuellement : ${formattedStock} ${apiProduct.unit || localProduct?.unitLabel || "article(s)"} en stock.`;
 }
 
 function buildApiOrderNote(unitMode, unitLabel) {
@@ -345,17 +351,22 @@ function mapApiProductToFront(apiProduct) {
     ? localProduct?.stockQuantity ?? null
     : Number(apiProduct.stock_qty);
 
-  const stockStatus = apiProduct.in_stock === false || Number(stockQuantity || 0) <= 0
+  const stockStatus = apiProduct.in_stock === false || (stockQuantity !== null && Number(stockQuantity) <= 0)
     ? "unavailable"
-    : Number(stockQuantity || 0) <= (unitMode === "weight" ? 1 : 5)
+    : stockQuantity !== null && Number(stockQuantity) <= (unitMode === "weight" ? 1 : 5)
       ? "limited"
       : "available";
+  const localTags = Array.isArray(localProduct?.tags) ? localProduct.tags : [];
+  const tags = apiProduct.is_rare
+    ? [...new Set([...localTags.filter((tag) => tag !== "Rare"), "Rare"])]
+    : localTags.filter((tag) => tag !== "Rare");
 
   return {
     ...(localProduct || {}),
-    id: localProduct?.id || apiProduct.slug || normalizeProductKey(apiProduct.name),
+    id: apiProduct.slug || localProduct?.id || normalizeProductKey(apiProduct.name),
     name: apiProduct.name || localProduct?.name || "Produit",
     category: backendCategoryLabel(apiProduct.category || localProduct?.category),
+    tags,
     priceValue: Number(apiProduct.price_eur ?? localProduct?.priceValue ?? 0),
     unitMode,
     unitLabel: apiProduct.unit || localProduct?.unitLabel || "pièce",
@@ -381,6 +392,7 @@ function mapApiProductToFront(apiProduct) {
     showRecommendedFormat: apiProduct.show_recommended_format !== false,
     showSeason: apiProduct.show_season !== false,
     isPublished: apiProduct.is_published !== false,
+    isRare: apiProduct.is_rare === true,
     slug: apiProduct.slug || localProduct?.id || normalizeProductKey(apiProduct.name),
     stockQuantity,
     stockStatus,
@@ -1027,6 +1039,41 @@ function productStockStatus(product) {
   return stockStatusFromInventory(inventory[product.id], product.stockStatus || "available");
 }
 
+function productStockLimit(product) {
+  const inventory = getInventoryMap();
+  const rawQuantity = inventory[product.id]?.stockQuantity ?? product.stockQuantity;
+
+  if (rawQuantity === null || rawQuantity === undefined || rawQuantity === "") {
+    return null;
+  }
+
+  const quantity = Number(rawQuantity);
+  return Number.isFinite(quantity) ? Math.max(0, quantity) : null;
+}
+
+function productStockLabel(product) {
+  if (product.showAvailability === false) {
+    return "";
+  }
+
+  const stockLimit = productStockLimit(product);
+  if (stockLimit === null) {
+    return "";
+  }
+
+  if (stockLimit <= 0) {
+    return "Rupture de stock";
+  }
+
+  const formattedStock = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 3 }).format(stockLimit);
+  return `${formattedStock} ${product.unitLabel} en stock`;
+}
+
+function stockQuantityMarkup(product) {
+  const label = productStockLabel(product);
+  return label ? `<span class="stock-quantity">${escapeHtml(label)}</span>` : "";
+}
+
 function productCatalogOrder(product) {
   return products.findIndex((item) => item.id === product.id);
 }
@@ -1103,7 +1150,7 @@ function cartQuantityDefault(product) {
 // Calcule le montant estime d'un produit selon son mode de vente.
 function calculateAmount(product, quantity, weight) {
   const base = isWeightProduct(product)
-    ? Math.max(0.1, Number(weight || 0))
+    ? Math.max(0.01, Number(weight || 0))
     : Math.max(1, Number(quantity || 1));
 
   return product.priceValue * base;
@@ -1111,7 +1158,7 @@ function calculateAmount(product, quantity, weight) {
 
 function formatPreview(product, quantity, weight) {
   if (isWeightProduct(product)) {
-    const safeWeight = Math.max(0.1, Number(weight || 0.5));
+    const safeWeight = Math.max(0.01, Number(weight || 0.5));
     const grams = Math.round(safeWeight * 1000);
     return `${grams} g : ${money(calculateAmount(product, quantity, safeWeight))}`;
   }
@@ -1161,7 +1208,17 @@ function addToCart(productId, sourceElement = document) {
   const cart = getCart();
   const existingLine = cart.find((line) => line.id === productId);
   const quantity = isWeightProduct(product) ? 1 : Math.max(1, Number(quantityInput ? quantityInput.value : 1));
-  const weight = isWeightProduct(product) ? Math.max(0.1, Number(weightInput ? weightInput.value : 0.5)) : 0;
+  const weight = isWeightProduct(product) ? Math.max(0.01, Number(weightInput ? weightInput.value : 0.5)) : 0;
+  const stockLimit = productStockLimit(product);
+  const currentAmount = existingLine
+    ? (isWeightProduct(product) ? Number(existingLine.weight || 0) : Number(existingLine.quantity || 0))
+    : 0;
+  const requestedAmount = currentAmount + (isWeightProduct(product) ? weight : quantity);
+
+  if (stockLimit !== null && requestedAmount > stockLimit) {
+    showToast(`Stock insuffisant : ${productStockLabel(product)}.`);
+    return;
+  }
 
   if (existingLine) {
     if (isWeightProduct(product)) {
@@ -1183,17 +1240,28 @@ function addToCart(productId, sourceElement = document) {
 function updateCartLine(productId, field, value) {
   const cart = getCart();
   const line = cart.find((entry) => entry.id === productId);
+  const product = findProduct(productId);
 
-  if (!line) {
+  if (!line || !product) {
+    return;
+  }
+
+  const stockLimit = productStockLimit(product);
+
+  if (stockLimit !== null && stockLimit <= 0) {
+    removeFromCart(productId);
+    showToast(`${product.name} n'est plus disponible.`);
     return;
   }
 
   if (field === "quantity") {
-    line.quantity = Math.max(1, Number(value || 1));
+    const requestedQuantity = Math.max(1, Number(value || 1));
+    line.quantity = stockLimit === null ? requestedQuantity : Math.min(requestedQuantity, Math.floor(stockLimit));
   }
 
   if (field === "weight") {
-    line.weight = Math.max(0.1, Number(value || 0.5));
+    const requestedWeight = Math.max(0.01, Number(value || 0.5));
+    line.weight = stockLimit === null ? requestedWeight : Math.min(requestedWeight, stockLimit);
   }
 
   writeStore(siteInfo.keys.cart, cart);

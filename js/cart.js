@@ -12,22 +12,26 @@
 }
 
 function cartControlMarkup(product, line) {
+  const stockLimit = productStockLimit(product);
+
   if (isWeightProduct(product)) {
+    const maxAttribute = stockLimit === null ? "" : `max="${stockLimit}"`;
     return `
       <div class="cart-control">
         <label>
           Poids (kg)
-          <input type="number" min="0.1" step="0.1" value="${Number(line.weight || 0.5).toFixed(1)}" data-cart-weight="${product.id}">
+          <input type="number" min="0.01" step="0.01" ${maxAttribute} value="${Number(line.weight || 0.5)}" data-cart-weight="${product.id}">
         </label>
       </div>
     `;
   }
 
+  const maxAttribute = stockLimit === null ? "" : `max="${Math.floor(stockLimit)}"`;
   return `
     <div class="cart-control">
       <label>
         Quantité
-        <input type="number" min="1" step="1" value="${Math.max(1, Number(line.quantity || 1))}" data-cart-quantity="${product.id}">
+          <input type="number" min="1" step="1" ${maxAttribute} value="${Math.max(1, Number(line.quantity || 1))}" data-cart-quantity="${product.id}">
       </label>
     </div>
   `;

@@ -825,6 +825,16 @@
     gap: 4px;
   }
 
+  .product-card .product-stock-status {
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .product-card .stock-quantity {
+    font-size: 9px;
+    text-align: left;
+  }
+
   .product-card .price-block {
     gap: 2px;
   }

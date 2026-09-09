@@ -78,39 +78,54 @@ function sortProductsList(list) {
   return sorted;
 }
 
-function weightShortcutMarkup(productId) {
+function weightShortcutMarkup(product, selectedWeight) {
+  const stockLimit = productStockLimit(product);
+  const shortcuts = [
+    { value: 0.25, label: "250 g" },
+    { value: 0.5, label: "500 g" },
+    { value: 1, label: "1 kg" },
+    { value: 2, label: "2 kg" }
+  ];
+
   return `
     <div class="weight-shortcuts" aria-label="Raccourcis de poids">
-      <button class="weight-chip" type="button" data-weight-shortcut="${productId}" data-weight-value="0.25">250 g</button>
-      <button class="weight-chip is-active" type="button" data-weight-shortcut="${productId}" data-weight-value="0.5">500 g</button>
-      <button class="weight-chip" type="button" data-weight-shortcut="${productId}" data-weight-value="1">1 kg</button>
-      <button class="weight-chip" type="button" data-weight-shortcut="${productId}" data-weight-value="2">2 kg</button>
+      ${shortcuts.map((shortcut) => {
+        const isActive = Math.abs(shortcut.value - selectedWeight) < 0.001;
+        const isDisabled = stockLimit !== null && shortcut.value > stockLimit;
+        return `<button class="weight-chip ${isActive ? "is-active" : ""}" type="button" data-weight-shortcut="${product.id}" data-weight-value="${shortcut.value}" ${isDisabled ? "disabled" : ""}>${shortcut.label}</button>`;
+      }).join("")}
     </div>
   `;
 }
 
 function productControlMarkup(product) {
+  const stockLimit = productStockLimit(product);
+  const unavailable = !productAvailabilityMeta(product).canOrder;
+
   // On teste si le produit est vendu au poids.
   if (isWeightProduct(product)) {
+    const selectedWeight = stockLimit === null ? 0.5 : Math.max(0.01, Math.min(0.5, stockLimit));
+    const maxAttribute = stockLimit === null ? "" : `max="${stockLimit}"`;
     // Si oui, on renvoie un bloc HTML avec un champ de saisie en kilogrammes.
     return `
       <div class="quantity-control">
         <label>
           Poids souhaité (kg)
-          <input type="number" min="0.1" step="0.1" value="0.5" data-product-weight="${product.id}">
+          <input type="number" min="0.01" step="0.01" value="${selectedWeight}" ${maxAttribute} data-product-weight="${product.id}" ${unavailable ? "disabled" : ""}>
         </label>
-        ${weightShortcutMarkup(product.id)}
-        <div class="price-preview" data-price-preview="${product.id}">${formatPreview(product, 1, 0.5)}</div>
+        ${weightShortcutMarkup(product, selectedWeight)}
+        <div class="price-preview" data-price-preview="${product.id}">${formatPreview(product, 1, selectedWeight)}</div>
       </div>
     `;
   }
 
+  const maxAttribute = stockLimit === null ? "" : `max="${Math.floor(stockLimit)}"`;
   // Sinon, le produit est vendu à l'unité et on affiche un champ de quantité.
   return `
     <div class="quantity-control">
       <label>
         Quantité
-        <input type="number" min="1" step="1" value="1" data-product-quantity="${product.id}">
+        <input type="number" min="1" step="1" value="1" ${maxAttribute} data-product-quantity="${product.id}" ${unavailable ? "disabled" : ""}>
       </label>
       <div class="price-preview" data-price-preview="${product.id}">${formatPreview(product, 1, 0)}</div>
     </div>
@@ -142,7 +157,10 @@ function productCardMarkup(product) {
             <span class="price-tag">${money(product.priceValue)}</span>
             <span class="unit-tag">${escapeHtml(unitDisplay(product))}</span>
           </div>
-          ${availabilityBadgeMarkup(product)}
+          <div class="product-stock-status">
+            ${availabilityBadgeMarkup(product)}
+            ${stockQuantityMarkup(product)}
+          </div>
         </div>
 
         <div class="product-card-title">

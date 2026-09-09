@@ -139,6 +139,7 @@ function renderProductDetail() {
     metaDescription.setAttribute("content", `${product.name} chez Capri Exo : description, disponibilité, conservation, format recommandé et commande.`);
   }
   const availability = productAvailabilityMeta(product);
+  const availabilityText = productStockLabel(product) || product.availability;
   const visibleTags = (product.tags || []).slice(0, 4);
   target.innerHTML = `
     <article class="product-detail">
@@ -152,7 +153,7 @@ function renderProductDetail() {
         ${product.showAvailability !== false ? `
           <div class="detail-status-row">
             ${availabilityBadgeMarkup(product)}
-            <span class="detail-availability-text">${escapeHtml(product.availability)}</span>
+            <span class="detail-availability-text">${escapeHtml(availabilityText)}</span>
           </div>
         ` : ""}
 
@@ -199,7 +200,7 @@ function renderProductDetail() {
 
       <div class="detail-grid">
         ${product.showStorage !== false ? detailItemMarkup("Conservation", product.storage) : ""}
-        ${product.showAvailability !== false ? detailItemMarkup("Disponibilité", product.availability) : ""}
+        ${product.showAvailability !== false ? detailItemMarkup("Disponibilité", availabilityText) : ""}
         ${product.showOrderNote !== false ? detailItemMarkup("Commande", product.orderNote) : ""}
         ${product.showTip !== false ? detailItemMarkup("Conseil", product.tip) : ""}
         ${product.showOrigin !== false ? detailItemMarkup("Origine", product.origin) : ""}
