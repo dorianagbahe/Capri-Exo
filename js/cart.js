@@ -162,7 +162,7 @@ function cartSummaryMarkup(cart) {
         <button class="button button-primary" type="button" data-finalize-order>Finaliser la commande</button>
         <a class="button button-secondary" href="index.html#catalogue-produits">Continuer mes achats</a>
         <button class="button button-secondary" type="button" data-clear-cart>Vider le panier</button>
-        <a class="button button-whatsapp" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" data-cart-whatsapp>Commander sur WhatsApp</a>
+        <a class="button button-whatsapp" href="${whatsappUrl}" data-cart-whatsapp>Commander sur WhatsApp</a>
       </div>
       <p class="muted">${escapeHtml(marketPickupSummary())}</p>
       <p class="muted">
@@ -235,7 +235,7 @@ function renderOrderConfirmation() {
           ${confirmationLines}
         </ul>
       </div>
-      <a class="button button-whatsapp" href="${whatsappUrl}" target="_blank" rel="noopener noreferrer">Envoyer cette commande sur WhatsApp</a>
+      <a class="button button-whatsapp" href="${whatsappUrl}">Envoyer cette commande sur WhatsApp</a>
     </article>
   `;
 }

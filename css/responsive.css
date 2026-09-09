@@ -934,3 +934,35 @@
     border-radius: 22px;
   }
 }
+@media (max-width: 760px) {
+  .whatsapp-page {
+    width: min(100% - 20px, 560px);
+    padding: 28px 0 48px;
+  }
+
+  .whatsapp-contact-shell {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .whatsapp-contact-visual {
+    min-height: 180px;
+    padding: 28px;
+  }
+
+  .whatsapp-contact-visual img {
+    width: min(170px, 48vw);
+  }
+
+  .whatsapp-contact-content {
+    padding: 28px 20px 32px;
+  }
+
+  .whatsapp-contact-actions {
+    width: 100%;
+  }
+
+  .whatsapp-contact-actions .button {
+    flex: 1 1 150px;
+  }
+}

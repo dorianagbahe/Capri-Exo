@@ -174,7 +174,7 @@ function renderProductDetail() {
             <button class="button button-secondary" type="button" data-favorite="${product.id}">
               ${favoriteActive(product.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
             </button>
-            <a class="button button-whatsapp" href="#" target="_blank" rel="noopener noreferrer" data-product-whatsapp="${product.id}">
+            <a class="button button-whatsapp" href="#" data-product-whatsapp="${product.id}">
               Commander sur WhatsApp
             </a>
           </div>

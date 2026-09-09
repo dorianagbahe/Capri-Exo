@@ -578,10 +578,19 @@ function pickupMarketLabel(marketId) {
   return findMarket(marketId).name;
 }
 
+function whatsappContactPageUrl(message = "") {
+  const params = new URLSearchParams();
+  if (message) {
+    params.set("message", message);
+  }
+
+  const query = params.toString();
+  return query ? `whatsapp.html?${query}` : "whatsapp.html";
+}
+
 function marketWhatsAppUrl(market) {
-  const cleanNumber = String(siteInfo.whatsappNumber || "").replace(/\D/g, "");
-  const message = encodeURIComponent(`Bonjour ${siteInfo.brand}, je souhaite un renseignement sur votre présence au ${market.name}.`);
-  return cleanNumber ? `https://wa.me/${cleanNumber}?text=${message}` : "#";
+  const message = `Bonjour ${siteInfo.brand}, je souhaite un renseignement sur votre présence au ${market.name}.`;
+  return whatsappContactPageUrl(message);
 }
 
 function marketCardMarkup(market, options = {}) {
@@ -611,7 +620,7 @@ function marketCardMarkup(market, options = {}) {
           <li><strong>Horaires :</strong> ${escapeHtml(market.schedule)}</li>
         </ul>
         <p class="market-location-note">${escapeHtml(market.note)}</p>
-        ${showContactButton ? `<a class="button button-secondary" href="${marketWhatsAppUrl(market)}" target="_blank" rel="noopener noreferrer">Contacter pour ${escapeHtml(market.city)}</a>` : ""}
+        ${showContactButton ? `<a class="button button-secondary" href="${marketWhatsAppUrl(market)}">Contacter pour ${escapeHtml(market.city)}</a>` : ""}
       </div>
     </article>
   `;
@@ -1392,8 +1401,7 @@ function buildWhatsAppMessage(cart, client = null, draft = getOrderDraft()) {
 }
 
 function buildWhatsAppUrl(cart, client = null, draft = getOrderDraft()) {
-  const cleanNumber = String(siteInfo.whatsappNumber || "").replace(/\D/g, "");
-  return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(buildWhatsAppMessage(cart, client, draft))}`;
+  return whatsappContactPageUrl(buildWhatsAppMessage(cart, client, draft));
 }
 
 function refreshCartWhatsAppLink() {

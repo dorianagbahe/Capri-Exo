@@ -54,3 +54,13 @@ Les images sont placées dans `images/`. Le chemin enregistré dans `js/data.js`
 ## Tester le site
 
 Lancez un serveur local depuis la racine du projet, puis ouvrez `index.html`. Évitez de déplacer les pages HTML dans un sous-dossier sans adapter tous les chemins vers `css/`, `js/` et `images/`.
+
+## Configurer WhatsApp et les appels
+
+Le numéro utilisé par la page `whatsapp.html`, les commandes WhatsApp et le bouton d'appel se règle une seule fois dans `js/data.js` :
+
+```js
+whatsappNumber: "33612345678",
+```
+
+Utilisez le format international sans espace et sans le signe `+`. Pour un numéro français commençant par `06`, remplacez le premier `0` par `33`.
