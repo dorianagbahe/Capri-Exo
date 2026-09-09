@@ -145,7 +145,7 @@ function productCardMarkup(product) {
           ${availabilityBadgeMarkup(product)}
         </div>
 
-        <div>
+        <div class="product-card-title">
           <h3>${escapeHtml(product.name)}</h3>
           ${tagsMarkup}
         </div>

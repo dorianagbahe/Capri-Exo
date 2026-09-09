@@ -741,9 +741,15 @@
     width: 100%;
   }
 
-  /* Cartes du catalogue : deux produits lisibles par ligne sur mobile. */
+  /* Cartes du catalogue : image a gauche, titre et prix a droite sur mobile. */
   .product-card {
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+    column-gap: 9px;
+    row-gap: 8px;
     min-height: 0;
+    padding: 9px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
@@ -752,10 +758,18 @@
     transform: translateY(-3px);
   }
 
+  .product-card .product-link {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    border-radius: 12px;
+  }
+
   .product-card .product-media {
     aspect-ratio: 1 / 1;
-    padding: 8px;
-    border-radius: 15px 15px 0 0;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
   }
 
   .product-card .product-media::after {
@@ -765,24 +779,41 @@
   }
 
   .product-card .media-category {
-    max-width: 100%;
-    padding: 5px 7px;
-    overflow: hidden;
-    font-size: 8px;
-    letter-spacing: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: none;
   }
 
   .product-card-body {
-    gap: 8px;
-    padding: 10px;
+    display: contents;
+  }
+
+  .product-card-body > .product-card-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    min-width: 0;
+  }
+
+  .product-card-body > .product-meta {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    min-width: 0;
+  }
+
+  .product-card-body > .quantity-control {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .product-card-body > .card-actions {
+    grid-column: 1 / -1;
+    grid-row: 4;
   }
 
   .product-card h3 {
-    min-height: 35px;
-    font-size: 14px;
-    line-height: 1.25;
+    min-height: 0;
+    font-size: 12px;
+    line-height: 1.2;
   }
 
   .product-card .product-tag-row {
@@ -791,7 +822,7 @@
 
   .product-card .product-meta {
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
 
   .product-card .price-block {
@@ -799,7 +830,7 @@
   }
 
   .product-card .price-tag {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .product-card .unit-tag {
