@@ -162,7 +162,7 @@ function cartSummaryMarkup(cart) {
       </div>
       <p class="muted">${escapeHtml(marketPickupSummary())}</p>
       <p class="muted">
-        ${clientRegistered() ? `Commande prête pour ${escapeHtml(client.name)}.` : "Le client peut ajuster les quantités ou le poids avant validation."}
+        ${clientRegistered() ? `Commande prête pour ${escapeHtml(client.name)}.` : "Les informations personnelles sont facultatives pour commander."}
       </p>
     </aside>
   `;
@@ -216,7 +216,7 @@ function renderOrderConfirmation() {
       </div>
       <h2>Commande ${escapeHtml(lastOrder.number)}</h2>
       <p class="muted">
-        Enregistrée le ${escapeHtml(formatDate(lastOrder.createdAt))} pour ${escapeHtml(lastOrder.client?.name || "votre compte client")}.
+        Enregistrée le ${escapeHtml(formatDate(lastOrder.createdAt))}${lastOrder.client?.name ? ` pour ${escapeHtml(lastOrder.client.name)}` : " sans informations personnelles"}.
       </p>
       <div class="order-confirmation-grid">
         <p><strong>Réception :</strong> ${escapeHtml(deliveryModeLabel(lastOrder.deliveryMode))}</p>
@@ -293,13 +293,21 @@ function clientRegistered() {
   return Boolean(client && client.email);
 }
 
-function completeOrder(client) {
+function completeOrder(client = null) {
   const order = createOrder(client);
   void syncOrderToApi(order);
   closeClientModal();
-  clearCartWithMessage(`Merci ${client.name}. Votre commande ${order.number} a bien été enregistrée.`);
+  const confirmationMessage = client?.name
+    ? `Merci ${client.name}. Votre commande ${order.number} a bien été enregistrée.`
+    : `Votre commande ${order.number} a bien été enregistrée sans informations personnelles.`;
+  clearCartWithMessage(confirmationMessage);
   renderOrderConfirmation();
   showToast(`Commande ${order.number} confirmée.`);
+}
+
+// Confirme la commande sans créer ni enregistrer de fiche client.
+function completeGuestOrder() {
+  completeOrder(null);
 }
 
 // Gere la derniere etape de commande : soit le client est connu, soit on ouvre la fenetre d'informations.

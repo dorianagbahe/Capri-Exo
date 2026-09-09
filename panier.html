@@ -106,11 +106,23 @@
       <h2>Vos informations</h2>
       
       <p>
-        
-        Cette fenêtre s'ouvre uniquement si le client n'est pas encore enregistré.
-        
-        Elle permet de préparer la confirmation de commande sans quitter la page.
+        Vos coordonnées sont facultatives. Choisissez simplement la manière dont vous souhaitez continuer.
       </p>
+
+      <div class="guest-order-option">
+        <h3>Commander sans compte</h3>
+        <p>La commande sera enregistrée sans nom, sans email et sans adresse.</p>
+        <button class="button button-primary" type="button" data-confirm-guest-order>
+          Continuer sans informations personnelles
+        </button>
+      </div>
+
+      <div class="modal-divider" aria-hidden="true"><span>ou</span></div>
+
+      <div class="client-form-heading">
+        <h3>Enregistrer mes coordonnées</h3>
+        <p>Cette option permet d'associer votre commande à vos informations personnelles.</p>
+      </div>
 
       
       <form id="formClient" class="form-stack">
@@ -151,7 +163,7 @@
         </label>
 
         
-        <button class="button button-primary" type="submit">Enregistrer et confirmer</button>
+        <button class="button button-secondary" type="submit">Enregistrer mes informations et confirmer</button>
       </form>
     </div>
   </section>

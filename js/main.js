@@ -183,6 +183,7 @@ function initGlobalActions() {
     const addButton = event.target.closest("[data-add-cart]");
     const removeButton = event.target.closest("[data-remove-cart]");
     const finalizeButton = event.target.closest("[data-finalize-order]");
+    const guestOrderButton = event.target.closest("[data-confirm-guest-order]");
     const clearCartButton = event.target.closest("[data-clear-cart]");
     const closeModalButton = event.target.closest("[data-fermer-client]");
     const categoryButton = event.target.closest("[data-category-filter]");
@@ -232,6 +233,11 @@ function initGlobalActions() {
 
     if (finalizeButton) {
       finalizeOrder();
+      return;
+    }
+
+    if (guestOrderButton) {
+      completeGuestOrder();
       return;
     }
 

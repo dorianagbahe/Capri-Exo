@@ -377,11 +377,63 @@
 .modal-card {
   position: relative;
   width: min(560px, 100%);
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
   padding: var(--space-card-padding);
   display: grid;
   gap: 16px;
   border-color: rgba(0, 0, 0, 0.08);
   background: #ffffff;
+}
+
+.guest-order-option {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  background: #f7f7f5;
+}
+
+.guest-order-option h3,
+.guest-order-option p,
+.client-form-heading h3,
+.client-form-heading p {
+  margin: 0;
+}
+
+.guest-order-option p,
+.client-form-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.guest-order-option .button {
+  width: 100%;
+}
+
+.modal-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.client-form-heading {
+  display: grid;
+  gap: 6px;
 }
 
 .modal-close {
