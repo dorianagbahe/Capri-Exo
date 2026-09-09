@@ -149,10 +149,12 @@ function renderProductDetail() {
           <p class="product-subtitle">${money(product.priceValue)} ${escapeHtml(unitDisplay(product))}</p>
         </div>
 
-        <div class="detail-status-row">
-          ${availabilityBadgeMarkup(product)}
-          <span class="detail-availability-text">${escapeHtml(product.availability)}</span>
-        </div>
+        ${product.showAvailability !== false ? `
+          <div class="detail-status-row">
+            ${availabilityBadgeMarkup(product)}
+            <span class="detail-availability-text">${escapeHtml(product.availability)}</span>
+          </div>
+        ` : ""}
 
         <div class="detail-purchase-panel">
           <div class="detail-purchase-heading">
@@ -185,7 +187,9 @@ function renderProductDetail() {
       <div class="product-information-head">
         <p class="eyebrow">Informations sur le produit</p>
         <h2 id="productInformationTitle">À propos de ${escapeHtml(product.name)}</h2>
-        <p class="product-description product-description-lead">${escapeHtml(product.description)}</p>
+        ${product.showDescription !== false && product.description ? `
+          <p class="product-description product-description-lead">${escapeHtml(product.description)}</p>
+        ` : ""}
         ${visibleTags.length ? `
           <div class="product-tag-row detail-tag-row">
             ${visibleTags.map(productTagMarkup).join("")}
@@ -194,15 +198,15 @@ function renderProductDetail() {
       </div>
 
       <div class="detail-grid">
-        ${detailItemMarkup("Conservation", product.storage)}
-        ${detailItemMarkup("Disponibilité", product.availability)}
-        ${detailItemMarkup("Commande", product.orderNote)}
-        ${detailItemMarkup("Conseil", product.tip)}
-        ${detailItemMarkup("Origine", product.origin)}
-        ${detailItemMarkup("Niveau de piquant", product.spiceLevel)}
-        ${detailItemMarkup("Produit conseillé avec", product.pairing)}
-        ${detailItemMarkup("Format recommandé", product.recommendedFormat)}
-        ${detailItemMarkup("Saison", product.seasonLabel)}
+        ${product.showStorage !== false ? detailItemMarkup("Conservation", product.storage) : ""}
+        ${product.showAvailability !== false ? detailItemMarkup("Disponibilité", product.availability) : ""}
+        ${product.showOrderNote !== false ? detailItemMarkup("Commande", product.orderNote) : ""}
+        ${product.showTip !== false ? detailItemMarkup("Conseil", product.tip) : ""}
+        ${product.showOrigin !== false ? detailItemMarkup("Origine", product.origin) : ""}
+        ${product.showSpiceLevel !== false ? detailItemMarkup("Niveau de piquant", product.spiceLevel) : ""}
+        ${product.showPairing !== false ? detailItemMarkup("Produit conseillé avec", product.pairing) : ""}
+        ${product.showRecommendedFormat !== false ? detailItemMarkup("Format recommandé", product.recommendedFormat) : ""}
+        ${product.showSeason !== false ? detailItemMarkup("Saison", product.seasonLabel) : ""}
         ${detailItemMarkup("Retrait possible", marketPickupSummary())}
       </div>
     </section>

@@ -361,10 +361,26 @@ function mapApiProductToFront(apiProduct) {
     unitLabel: apiProduct.unit || localProduct?.unitLabel || "pièce",
     image: isUsableApiImage(apiProduct.image_url) ? apiProduct.image_url : (localProduct?.image || ""),
     description: apiProduct.description || localProduct?.description || "",
-    storage: localProduct?.storage || "Informations de conservation a completer.",
-    availability: buildApiAvailability(apiProduct, localProduct),
-    orderNote: localProduct?.orderNote || buildApiOrderNote(unitMode, apiProduct.unit || localProduct?.unitLabel || "pièce"),
-    tip: localProduct?.tip || "Informations complementaires a completer.",
+    origin: apiProduct.origin || localProduct?.origin || "",
+    storage: apiProduct.storage || localProduct?.storage || "Informations de conservation a completer.",
+    availability: apiProduct.availability_text || buildApiAvailability(apiProduct, localProduct),
+    orderNote: apiProduct.order_note || localProduct?.orderNote || buildApiOrderNote(unitMode, apiProduct.unit || localProduct?.unitLabel || "pièce"),
+    tip: apiProduct.tip || localProduct?.tip || "Informations complementaires a completer.",
+    spiceLevel: apiProduct.spice_level || localProduct?.spiceLevel || "",
+    pairing: apiProduct.pairing || localProduct?.pairing || "",
+    recommendedFormat: apiProduct.recommended_format || localProduct?.recommendedFormat || "",
+    seasonLabel: apiProduct.season_label || localProduct?.seasonLabel || "",
+    showDescription: apiProduct.show_description !== false,
+    showOrigin: apiProduct.show_origin !== false,
+    showStorage: apiProduct.show_storage !== false,
+    showAvailability: apiProduct.show_availability !== false,
+    showOrderNote: apiProduct.show_order_note !== false,
+    showTip: apiProduct.show_tip !== false,
+    showSpiceLevel: apiProduct.show_spice_level !== false,
+    showPairing: apiProduct.show_pairing !== false,
+    showRecommendedFormat: apiProduct.show_recommended_format !== false,
+    showSeason: apiProduct.show_season !== false,
+    isPublished: apiProduct.is_published !== false,
     slug: apiProduct.slug || localProduct?.id || normalizeProductKey(apiProduct.name),
     stockQuantity,
     stockStatus,
@@ -412,11 +428,12 @@ async function apiRequest(path, options = {}) {
 function mergeCatalogWithApi(apiProducts) {
   const mappedProducts = apiProducts.map((apiProduct) => mapApiProductToFront(apiProduct));
   const apiIds = new Set(mappedProducts.map((product) => product.id));
+  const publishedProducts = mappedProducts.filter((product) => product.isPublished);
   const fallbackProducts = products
     .filter((product) => !apiIds.has(product.id))
     .map((product) => ({ ...product, source: product.source || "local" }));
 
-  products.splice(0, products.length, ...mappedProducts, ...fallbackProducts);
+  products.splice(0, products.length, ...publishedProducts, ...fallbackProducts);
   refreshPreparedCatalogState();
 }
 
@@ -1015,6 +1032,10 @@ function productCatalogOrder(product) {
 }
 
 function availabilityBadgeMarkup(product) {
+  if (product.showAvailability === false) {
+    return "";
+  }
+
   const meta = productAvailabilityMeta(product);
   return `<span class="availability-badge ${meta.className}">${meta.label}</span>`;
 }
