@@ -1,4 +1,4 @@
-// Catalogue source du site : chaque objet represente un produit exploitable partout.
+﻿// Catalogue source du site : chaque objet represente un produit exploitable partout.
 const products = [
   {
     id: "arachide-caramelisee",
@@ -982,7 +982,7 @@ const products = [
     priceValue: 0.20,
     unitMode: "count",
     unitLabel: "piece",
-    image: "images/noix de cola.png",
+    image: "",
     description: "Noix de cola séchées, riches en nutriments et en antioxydants.",
     origin: "Afrique de l'Ouest.",
     storage: "À conserver dans un endroit sec, frais et à l'abri de la lumière.",
@@ -997,7 +997,7 @@ const products = [
     priceValue: 0.15,
     unitMode: "count",
     unitLabel: "piece",
-    image: "images/petit-cola.png",
+    image: "",
     description: "Petit cola séché, idéal pour préparer une boisson rafraîchissante.",
     origin: "Afrique de l'Ouest.",
     storage: "À conserver dans un endroit sec, frais et à l'abri de la lumière.",
@@ -1012,7 +1012,7 @@ const products = [
     priceValue: 5,
     unitMode: "count",
     unitLabel: "piece",
-    image: "images/beurre-de-karite.png",
+    image: "images/Beurre de karité.png",
     description: "Beurre de karité pur, idéal pour l'hygiène et la beauté.",
     origin: "Afrique de l'Ouest.",
     storage: "À conserver dans un endroit sec, frais et à l'abri de la lumière.",

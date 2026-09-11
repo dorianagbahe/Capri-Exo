@@ -29,10 +29,23 @@ jobs:
       - name: Configurer GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Construire le dossier public
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'backend/' \
+            --exclude 'outils/' \
+            --exclude '_site/' \
+            --exclude '*.bat' \
+            --exclude 'README.md' \
+            ./ _site/
+
       - name: Préparer les fichiers du site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
 
       - name: Publier le site
         id: deployment

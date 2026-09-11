@@ -55,6 +55,20 @@ Les images sont placées dans `images/`. Le chemin enregistré dans `js/data.js`
 
 Lancez un serveur local depuis la racine du projet, puis ouvrez `index.html`. Évitez de déplacer les pages HTML dans un sous-dossier sans adapter tous les chemins vers `css/`, `js/` et `images/`.
 
+## Dossier unique
+
+`Capri-exo finale` est l'unique dossier à ouvrir et à modifier. Il contient :
+
+- le site public à la racine ;
+- le back-end Django dans `backend/` ;
+- les outils de démarrage et de publication dans `outils/` ;
+- le dépôt Git relié à `https://github.com/dorianagbahe/Capri-Exo`.
+
+Double-cliquez sur `LANCER_CAPRI_EXO.bat` pour ouvrir le site local avec son back-end.
+Double-cliquez sur `PUBLIER_CAPRI_EXO.bat` pour vérifier puis publier toutes les modifications.
+
+La base locale `backend/db.sqlite3` contient les données administratives. Elle reste sur l'ordinateur et n'est jamais publiée sur GitHub.
+
 ## Configurer WhatsApp et les appels
 
 Le numéro utilisé par la page `whatsapp.html`, les commandes WhatsApp et le bouton d'appel se règle une seule fois dans `js/data.js` :

@@ -5,3 +5,11 @@ Thumbs.db
 .DS_Store
 outils/*.pid
 outils/*.log
+backend/.env
+backend/db.sqlite3
+backend/db.sqlite3.*
+backend/**/__pycache__/
+*.py[cod]
+.venv/
+backend/staticfiles/
+backend/media/
