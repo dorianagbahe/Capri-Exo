@@ -81,10 +81,12 @@ function sortProductsList(list) {
 function weightShortcutMarkup(product, selectedWeight) {
   const stockLimit = productStockLimit(product);
   const shortcuts = [
+    { value: 0.1, label: "100 g" },
     { value: 0.25, label: "250 g" },
     { value: 0.5, label: "500 g" },
     { value: 1, label: "1 kg" },
-    { value: 2, label: "2 kg" }
+    { value: 2, label: "2 kg" },
+    { value: 5, label: "5 kg" }
   ];
 
   return `
