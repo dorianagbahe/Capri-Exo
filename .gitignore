@@ -8,6 +8,7 @@ outils/*.log
 backend/.env
 backend/db.sqlite3
 backend/db.sqlite3.*
+backend/backups/
 backend/**/__pycache__/
 *.py[cod]
 .venv/

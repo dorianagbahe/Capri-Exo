@@ -56,6 +56,7 @@ if ($catalog -match 'image:\s*"[^"]*\\') {
 
 Write-Host "$($productIds.Count) produits vérifiés, sans doublon ni image manquante." -ForegroundColor Green
 
+& (Join-Path $PSScriptRoot "sauvegarder-base.ps1")
 Invoke-CheckedCommand -Command "py" -Arguments @("backend\manage.py", "check")
 Invoke-CheckedCommand -Command "git" -Arguments @("diff", "--check")
 

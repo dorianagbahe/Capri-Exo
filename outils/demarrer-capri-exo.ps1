@@ -21,6 +21,8 @@ if (-not (Test-Path (Join-Path $backendRoot "manage.py"))) {
   throw "Le dossier backend est incomplet."
 }
 
+& (Join-Path $PSScriptRoot "sauvegarder-base.ps1")
+
 if (-not (Test-LocalPort -Port 8000)) {
   $backendProcess = Start-Process -FilePath "py" -ArgumentList "manage.py", "runserver", "127.0.0.1:8000", "--noreload" -WorkingDirectory $backendRoot -WindowStyle Hidden -PassThru
   [IO.File]::WriteAllText((Join-Path $PSScriptRoot "backend.pid"), [string]$backendProcess.Id)
